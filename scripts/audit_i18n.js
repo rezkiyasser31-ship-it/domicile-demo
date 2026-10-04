@@ -1,4 +1,4 @@
-const fs = require('fs');
+// Utility script to audit i18n.js for missing or duplicate translation keys.\nconst fs = require('fs');
 
 const path = 'assets/js/i18n.js';
 const c = fs.readFileSync(path, 'utf8');
