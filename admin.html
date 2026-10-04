@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html dir="ltr" lang="fr">
 <head>
 <meta charset="utf-8"/>
@@ -7,16 +6,18 @@
 <title data-i18n="str_92">Administration | Domicile</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link href="assets/css/styles.css" rel="stylesheet"/>
 <style>
-    #admin-dashboard { display: none; }
+    /* Demo specific */
+    .demo-badge { background: var(--color-red, #8B2635); color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; margin-left: 1rem; vertical-align: middle;}
     
     /* Layout */
     .dashboard-layout { display: flex; flex-direction: column; gap: 2rem; }
     @media(min-width: 768px) {
         .dashboard-layout { flex-direction: row; }
         .dashboard-sidebar { width: 250px; flex-shrink: 0; }
-        .dashboard-content { flex-grow: 1; }
+        .dashboard-content { flex-grow: 1; min-width: 0; }
     }
     
     /* Sidebar Navigation */
@@ -32,22 +33,49 @@
     /* Stats */
     .admin-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
     .stat-card { background: var(--color-ivory, #FAF9F6); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--color-sand, #E6E2DD); text-align: center; }
-    .stat-card h3 { font-size: 2rem; color: var(--color-red, #8B2635); margin-bottom: 0.5rem; }
-    .stat-card p { font-size: 0.875rem; color: var(--color-charcoal, #333); }
+    .stat-card h3 { font-size: 2rem; color: var(--color-red, #8B2635); margin-bottom: 0.25rem; }
+    .stat-card p { font-size: 0.875rem; color: var(--color-charcoal, #333); margin-bottom: 0.25rem; }
+    .stat-delta { font-size: 0.75rem; font-weight: 600; display: block; margin-top: 0.25rem; }
+    .stat-delta.positive { color: #166534; }
+    .stat-delta.negative { color: #991B1B; }
+    .stat-delta.neutral { color: #4B5563; }
     
     /* Low stock alert */
     #low-stock-banner { display: none; background-color: #FEF2F2; color: #991B1B; padding: 1rem; border-radius: 8px; border: 1px solid #F87171; margin-bottom: 1.5rem; font-weight: 600; text-align: center; }
     
-    /* Inventory Table */
-    .inventory-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-    .inventory-table th, .inventory-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--color-sand, #E6E2DD); }
-    .inventory-table th { font-family: 'Playfair Display', serif; background: var(--color-ivory, #FAF9F6); }
-    .stock-input { width: 80px; padding: 0.25rem; border: 1px solid #ccc; border-radius: 4px; }
-    .low-stock-row { color: #991B1B; background-color: #FEF2F2; }
-    .low-stock-badge { display: inline-block; background-color: #991B1B; color: white; padding: 0.1rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: bold; margin-left: 0.5rem; }
+    /* Charts Grid */
+    .charts-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2rem; }
+    @media(min-width: 1024px) {
+        .charts-grid { grid-template-columns: 2fr 1fr; }
+    }
+    .chart-card { background: var(--color-ivory, #FAF9F6); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--color-sand, #E6E2DD); }
+    .chart-card h3 { font-size: 1.25rem; font-family: 'Playfair Display', serif; margin-bottom: 1rem; color: var(--color-charcoal, #333); }
+    
+    /* Feed */
+    .feed-list { list-style: none; padding: 0; margin: 0; }
+    .feed-item { padding: 0.75rem 0; border-bottom: 1px solid var(--color-sand, #E6E2DD); font-size: 0.875rem; }
+    .feed-item:last-child { border-bottom: none; }
+    .feed-time { color: #666; font-size: 0.75rem; display: block; margin-top: 0.25rem; }
 
-    /* Sparkline */
-    .sparkline-container { background: var(--color-ivory, #FAF9F6); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--color-sand, #E6E2DD); margin-bottom: 2rem; }
+    /* Inventory Table */
+    .inventory-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.875rem; }
+    .inventory-table th, .inventory-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--color-sand, #E6E2DD); }
+    .inventory-table th { font-family: 'Playfair Display', serif; background: var(--color-ivory, #FAF9F6); position: relative; }
+    th.sortable { cursor: pointer; user-select: none; transition: background 0.2s; }
+    th.sortable:hover { background: var(--color-sand, #E6E2DD); }
+    th.sortable::after { content: '\21D5'; position: absolute; right: 0.5rem; color: #999; }
+    .stock-input { width: 70px; padding: 0.25rem; border: 1px solid #ccc; border-radius: 4px; }
+    
+    .badge { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: bold; }
+    .badge-in-stock { background-color: #D1FAE5; color: #065F46; }
+    .badge-low-stock { background-color: #FEF3C7; color: #92400E; }
+    .badge-out-stock { background-color: #FEE2E2; color: #991B1B; }
+    
+    .date-range-btn { padding: 0.5rem 1rem; border: 1px solid var(--color-sand, #E6E2DD); border-radius: 4px; cursor: pointer; background: white; font-size: 0.875rem; transition: all 0.2s; }
+    .date-range-btn:hover { background: var(--color-sand, #E6E2DD); }
+    .date-range-btn.active { background: var(--color-red, #8B2635); color: white; border-color: var(--color-red, #8B2635); }
+    
+    canvas { max-width: 100%; }
 </style>
 <meta content="Espace d'administration Domicile." name="description"/></head>
 <body>
@@ -55,7 +83,8 @@
 <header class="site-header">
 <div class="container header-inner" style="display: flex; justify-content: space-between; align-items: center;">
 <a class="brand" href="index.html">
-<div class="brand-wordmark" data-i18n="admin_brand">Domicile Admin</div>
+<div class="brand-wordmark" style="display: inline-block;" data-i18n="admin_brand">Domicile Admin</div>
+<span class="demo-badge" data-i18n="admin_demo_badge">Mode Démo</span>
 </a>
 <div class="flex items-center gap-4">
 <div class="lang-switcher">
@@ -67,17 +96,9 @@
 </div>
 </header>
 <main class="container" style="padding-block: 4rem; min-height: 70vh;">
-<div id="login-section" style="max-width: 400px; margin: 0 auto; text-align: center; background: var(--color-ivory, #FAF9F6); padding: 2rem; border-radius: 8px; border: 1px solid var(--color-sand, #E6E2DD);">
-<h2 data-i18n="admin_login_title" style="margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Connexion Admin</h2>
-<p data-i18n="admin_login_demo" style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #666;">Ceci est une démo. Mot de passe : domicile2026</p>
-<input data-i18n-placeholder="admin_login_pwd_placeholder" id="admin-pwd" placeholder="Mot de passe" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px;" type="password"/>
-<button class="btn" data-i18n="admin_login_btn" id="login-btn" style="width: 100%;">Se connecter</button>
-<p data-i18n="admin_login_err" id="login-err" style="color: red; display: none; margin-top: 1rem; font-size: 0.875rem;">Mot de passe incorrect</p>
-</div>
 <div id="admin-dashboard">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 2rem; gap: 1rem;">
 <h2 data-i18n="admin_dashboard_title" style="font-family: 'Playfair Display', serif;">Tableau de bord</h2>
-<button class="btn btn-secondary" data-i18n="admin_logout_btn" id="logout-btn">Déconnexion</button>
 </div>
 <div class="dashboard-layout">
 <aside class="dashboard-sidebar">
@@ -93,60 +114,92 @@
 </div>
 <!-- Overview Tab -->
 <div class="tab-pane active" id="overview-tab">
+<div style="display: flex; justify-content: flex-end; margin-bottom: 1rem; gap: 0.5rem; flex-wrap: wrap;">
+    <button class="date-range-btn active" data-range="7" data-i18n="admin_range_7">7 Jours</button>
+    <button class="date-range-btn" data-range="30" data-i18n="admin_range_30">30 Jours</button>
+    <button class="date-range-btn" data-range="90" data-i18n="admin_range_90">90 Jours</button>
+</div>
 <div class="admin-stats">
 <div class="stat-card">
-<h3>1,245</h3>
+<h3 id="stat-visits-val">1,245</h3>
 <p data-i18n="admin_stat_visits">Visites ce mois</p>
+<span class="stat-delta positive" id="delta-visits" data-i18n="delta_visits_7">+12% vs semaine dernière</span>
 </div>
 <div class="stat-card">
-<h3>84</h3>
+<h3 id="stat-wa-val">84</h3>
 <p data-i18n="admin_stat_wa">Clics WhatsApp</p>
+<span class="stat-delta positive" id="delta-wa" data-i18n="delta_wa_7">+5% vs semaine dernière</span>
 </div>
 <div class="stat-card">
 <h3 id="stat-low-stock-val">0</h3>
 <p data-i18n="admin_stat_lowstock">Articles stock bas</p>
+<span class="stat-delta neutral" id="delta-lowstock" data-i18n="delta_lowstock_7">-2 vs semaine dernière</span>
 </div>
 <div class="stat-card">
-<h3 data-i18n="str_115" style="font-size: 1.25rem; line-height: 1.2; margin-top: 0.5rem;">Canapé 'Sahara'<br/>Lit 'Atlas'</h3>
+<h3 id="stat-top-val" style="font-size: 1.25rem; line-height: 1.2; margin-top: 0.5rem;" data-i18n="str_115">Canapé 'Sahara'<br/>Lit 'Atlas'</h3>
 <p data-i18n="admin_stat_top" style="margin-top: 0.5rem;">Top Produits Vus</p>
+<span class="stat-delta neutral" id="delta-top" data-i18n="delta_top_7">Stable</span>
 </div>
 </div>
-<div class="sparkline-container">
-<h3 data-i18n="admin_chart_title" style="font-size: 1.25rem; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Visites (7 derniers jours)</h3>
-<svg preserveaspectratio="none" style="width: 100%; height: auto; max-height: 200px;" viewbox="0 0 400 100">
-<!-- Background Grid -->
-<line stroke="#E6E2DD" stroke-width="1" x1="0" x2="400" y1="20" y2="20"></line>
-<line stroke="#E6E2DD" stroke-width="1" x1="0" x2="400" y1="50" y2="50"></line>
-<line stroke="#E6E2DD" stroke-width="1" x1="0" x2="400" y1="80" y2="80"></line>
-<!-- Line Chart -->
-<polyline fill="none" points="0,80 50,60 100,75 150,40 200,30 250,55 300,20 350,15 400,10" stroke="#8B2635" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
-<!-- Data Points -->
-<circle cx="0" cy="80" fill="#8B2635" r="4"></circle>
-<circle cx="50" cy="60" fill="#8B2635" r="4"></circle>
-<circle cx="100" cy="75" fill="#8B2635" r="4"></circle>
-<circle cx="150" cy="40" fill="#8B2635" r="4"></circle>
-<circle cx="200" cy="30" fill="#8B2635" r="4"></circle>
-<circle cx="250" cy="55" fill="#8B2635" r="4"></circle>
-<circle cx="300" cy="20" fill="#8B2635" r="4"></circle>
-<circle cx="350" cy="15" fill="#8B2635" r="4"></circle>
-<circle cx="400" cy="10" fill="#8B2635" r="4"></circle>
-</svg>
+
+<div class="charts-grid">
+    <div class="chart-card">
+        <h3 data-i18n="admin_chart_visits">Visites & Clics WhatsApp</h3>
+        <div style="position: relative; height: 300px; width: 100%;">
+            <canvas id="visitsChart"></canvas>
+        </div>
+    </div>
+    <div class="chart-card">
+        <h3 data-i18n="admin_chart_traffic">Sources de Trafic</h3>
+        <div style="position: relative; height: 300px; width: 100%;">
+            <canvas id="trafficChart"></canvas>
+        </div>
+    </div>
+</div>
+<div class="charts-grid">
+    <div class="chart-card">
+        <h3 data-i18n="admin_chart_category">Vues par Catégorie</h3>
+        <div style="position: relative; height: 300px; width: 100%;">
+            <canvas id="categoryChart"></canvas>
+        </div>
+    </div>
+    <div class="chart-card">
+        <h3 data-i18n="admin_feed_title">Activité Récente</h3>
+        <ul class="feed-list" id="activity-feed">
+            <li class="feed-item">
+                <span data-i18n="feed_1">Nouvelle visite sur Canapé Sahara</span>
+                <span class="feed-time" data-i18n="time_5m">Il y a 5 min</span>
+            </li>
+            <li class="feed-item">
+                <span data-i18n="feed_2">Clic WhatsApp depuis Showroom</span>
+                <span class="feed-time" data-i18n="time_1h">Il y a 1 h</span>
+            </li>
+            <li class="feed-item">
+                <span data-i18n="feed_3">Stock bas: Commode Nocturne</span>
+                <span class="feed-time" data-i18n="time_3h">Il y a 3 h</span>
+            </li>
+        </ul>
+    </div>
 </div>
 </div>
 <!-- Inventory Tab -->
 <div class="tab-pane" id="inventory-tab">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-<h3 data-i18n="admin_inv_title" style="font-family: 'Playfair Display', serif;">Inventaire des Produits</h3>
-<input data-i18n-placeholder="admin_inv_search_placeholder" id="inventory-search" placeholder="Rechercher un produit..." style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; width: 100%; max-width: 300px;" type="text"/>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 1rem; gap: 1rem;">
+<h3 data-i18n="admin_inv_title" style="font-family: 'Playfair Display', serif; margin: 0;">Inventaire des Produits</h3>
+<div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+    <input data-i18n-placeholder="admin_inv_search_placeholder" id="inventory-search" placeholder="Rechercher un produit..." style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; width: 100%; max-width: 250px;" type="text"/>
+    <button class="btn btn-secondary" id="export-csv-btn" data-i18n="admin_export_csv" style="padding: 0.5rem 1rem;">Exporter en CSV</button>
+</div>
 </div>
 <div style="overflow-x: auto;">
 <table class="inventory-table">
 <thead>
 <tr>
-<th data-i18n="admin_inv_th_prod">Produit</th>
-<th data-i18n="admin_inv_th_cat">Catégorie</th>
-<th data-i18n="filter_price">Prix</th>
-<th data-i18n="admin_inv_th_stock">Stock</th>
+<th class="sortable" data-sort="name" data-i18n="admin_inv_th_prod">Produit</th>
+<th class="sortable" data-sort="category" data-i18n="admin_inv_th_cat">Catégorie</th>
+<th class="sortable" data-sort="price" data-i18n="filter_price">Prix</th>
+<th class="sortable" data-sort="stock" data-i18n="admin_inv_th_stock">Stock</th>
+<th data-i18n="admin_inv_th_status">Statut</th>
 </tr>
 </thead>
 <tbody id="inventory-body">
@@ -161,58 +214,171 @@
 </main>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const loginSection = document.getElementById('login-section');
-      const adminDashboard = document.getElementById('admin-dashboard');
-      const loginBtn = document.getElementById('login-btn');
-      const pwdInput = document.getElementById('admin-pwd');
-      const loginErr = document.getElementById('login-err');
-      const logoutBtn = document.getElementById('logout-btn');
-
-      loginBtn.addEventListener('click', () => {
-        if (pwdInput.value === 'domicile2026') {
-          loginSection.style.display = 'none';
-          adminDashboard.style.display = 'block';
-        } else {
-          loginErr.style.display = 'block';
-        }
-      });
-
-      logoutBtn.addEventListener('click', () => {
-        pwdInput.value = '';
-        loginErr.style.display = 'none';
-        adminDashboard.style.display = 'none';
-        loginSection.style.display = 'block';
-      });
-
       // Tabs Logic
       const navTabs = document.querySelectorAll('.nav-tab');
       const tabPanes = document.querySelectorAll('.tab-pane');
       
       navTabs.forEach(tab => {
           tab.addEventListener('click', () => {
-              // Remove active from all tabs
               navTabs.forEach(t => t.classList.remove('active'));
               tabPanes.forEach(p => p.classList.remove('active'));
               
-              // Add active to current
               tab.classList.add('active');
               const target = document.getElementById(tab.getAttribute('data-target'));
               if(target) target.classList.add('active');
           });
       });
 
-      // Mock Inventory Data
-      const products = [
-        { id: 'p1', name: "Canapé Modulable 'Sahara'", category: "Salon", price: "120 000 DA", stock: 3 },
-        { id: 'p2', name: "Lit King Size 'Atlas'", category: "Chambre", price: "220 000 DA", stock: 2 },
-        { id: 'p3', name: "Table à Manger 'Oran'", category: "Salle à manger", price: "150 000 DA", stock: 8 },
-        { id: 'p4', name: "Fauteuil d'Accent 'Zian'", category: "Salon", price: "35 000 DA", stock: 12 },
-        { id: 'p5', name: "Commode 'Nocturne'", category: "Chambre", price: "85 000 DA", stock: 4 },
-        { id: 'p6', name: "Buffet 'Méditerranée'", category: "Salle à manger", price: "95 000 DA", stock: 7 }
+      // --- Chart.js Setup ---
+      Chart.defaults.font.family = "'Cairo', sans-serif";
+      Chart.defaults.color = '#333';
+      
+      const visitsCtx = document.getElementById('visitsChart').getContext('2d');
+      const trafficCtx = document.getElementById('trafficChart').getContext('2d');
+      const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+
+      const charts = {};
+
+      const dataStore = {
+          '7': {
+              visits: [120, 150, 180, 140, 200, 250, 205],
+              wa: [5, 8, 12, 6, 15, 20, 18],
+              labels: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'],
+              traffic: [60, 25, 15],
+              categories: [450, 320, 280],
+              stats: { visits: '1,245', wa: '84', delta_visits: 'delta_visits_7', delta_wa: 'delta_wa_7', delta_lowstock: 'delta_lowstock_7', delta_top: 'delta_top_7' }
+          },
+          '30': {
+              visits: [500, 600, 550, 700],
+              wa: [30, 45, 40, 55],
+              labels: ['Semaine 1', 'Semaine 2', 'Semaine 3', 'Semaine 4'],
+              traffic: [65, 20, 15],
+              categories: [1800, 1300, 1100],
+              stats: { visits: '4,890', wa: '325', delta_visits: 'delta_visits_30', delta_wa: 'delta_wa_30', delta_lowstock: 'delta_lowstock_30', delta_top: 'delta_top_30' }
+          },
+          '90': {
+              visits: [1500, 1800, 2100],
+              wa: [120, 150, 180],
+              labels: ['Mois 1', 'Mois 2', 'Mois 3'],
+              traffic: [70, 15, 15],
+              categories: [5200, 3800, 3100],
+              stats: { visits: '14,500', wa: '980', delta_visits: 'delta_visits_90', delta_wa: 'delta_wa_90', delta_lowstock: 'delta_lowstock_90', delta_top: 'delta_top_90' }
+          }
+      };
+
+      function initCharts() {
+          charts.visits = new Chart(visitsCtx, {
+              type: 'line',
+              data: {
+                  labels: dataStore['7'].labels,
+                  datasets: [
+                      {
+                          label: 'Visites',
+                          data: dataStore['7'].visits,
+                          borderColor: '#8B2635',
+                          backgroundColor: 'rgba(139, 38, 53, 0.1)',
+                          tension: 0.4,
+                          fill: true
+                      },
+                      {
+                          label: 'Clics WhatsApp',
+                          data: dataStore['7'].wa,
+                          borderColor: '#4ade80',
+                          backgroundColor: 'transparent',
+                          tension: 0.4,
+                          borderDash: [5, 5]
+                      }
+                  ]
+              },
+              options: { responsive: true, maintainAspectRatio: false }
+          });
+
+          charts.traffic = new Chart(trafficCtx, {
+              type: 'doughnut',
+              data: {
+                  labels: ['Direct', 'WhatsApp', 'Social'],
+                  datasets: [{
+                      data: dataStore['7'].traffic,
+                      backgroundColor: ['#8B2635', '#4ade80', '#E6E2DD']
+                  }]
+              },
+              options: { responsive: true, maintainAspectRatio: false }
+          });
+
+          charts.category = new Chart(categoryCtx, {
+              type: 'bar',
+              data: {
+                  labels: ['Salon', 'Chambre', 'Salle à manger'],
+                  datasets: [{
+                      label: 'Vues',
+                      data: dataStore['7'].categories,
+                      backgroundColor: '#8B2635',
+                      borderRadius: 4
+                  }]
+              },
+              options: { 
+                  responsive: true, 
+                  maintainAspectRatio: false,
+                  scales: { y: { beginAtZero: true } },
+                  plugins: { legend: { display: false } }
+              }
+          });
+      }
+
+      initCharts();
+
+      const rangeBtns = document.querySelectorAll('.date-range-btn');
+      rangeBtns.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+              rangeBtns.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              const range = btn.getAttribute('data-range');
+              updateDashboard(range);
+          });
+      });
+
+      function updateDashboard(range) {
+          const data = dataStore[range];
+          
+          document.getElementById('stat-visits-val').textContent = data.stats.visits;
+          document.getElementById('stat-wa-val').textContent = data.stats.wa;
+          
+          document.getElementById('delta-visits').setAttribute('data-i18n', data.stats.delta_visits);
+          document.getElementById('delta-wa').setAttribute('data-i18n', data.stats.delta_wa);
+          document.getElementById('delta-lowstock').setAttribute('data-i18n', data.stats.delta_lowstock);
+          document.getElementById('delta-top').setAttribute('data-i18n', data.stats.delta_top);
+
+          // Update Charts
+          charts.visits.data.labels = data.labels;
+          charts.visits.data.datasets[0].data = data.visits;
+          charts.visits.data.datasets[1].data = data.wa;
+          charts.visits.update();
+
+          charts.traffic.data.datasets[0].data = data.traffic;
+          charts.traffic.update();
+
+          charts.category.data.datasets[0].data = data.categories;
+          charts.category.update();
+
+          // Retrigger i18n
+          const activeLangBtn = document.querySelector('.lang-switcher button.active');
+          if (activeLangBtn) activeLangBtn.click();
+      }
+
+      // --- Mock Inventory Data ---
+      let products = [
+        { id: 'p1', name: "Canapé Modulable 'Sahara'", category: "Salon", price: 120000, priceStr: "120 000 DA", stock: 3 },
+        { id: 'p2', name: "Lit King Size 'Atlas'", category: "Chambre", price: 220000, priceStr: "220 000 DA", stock: 2 },
+        { id: 'p3', name: "Table à Manger 'Oran'", category: "Salle à manger", price: 150000, priceStr: "150 000 DA", stock: 8 },
+        { id: 'p4', name: "Fauteuil d'Accent 'Zian'", category: "Salon", price: 35000, priceStr: "35 000 DA", stock: 12 },
+        { id: 'p5', name: "Commode 'Nocturne'", category: "Chambre", price: 85000, priceStr: "85 000 DA", stock: 0 },
+        { id: 'p6', name: "Buffet 'Méditerranée'", category: "Salle à manger", price: 95000, priceStr: "95 000 DA", stock: 7 }
       ];
 
       const tbody = document.getElementById('inventory-body');
       const lowStockThreshold = 5;
+      let sortCol = 'name';
+      let sortAsc = true;
       
       function renderTable() {
           tbody.innerHTML = '';
@@ -220,39 +386,52 @@
           
           const searchTerm = document.getElementById('inventory-search').value.toLowerCase();
 
-          products.forEach((p, idx) => {
-            if(searchTerm && !p.name.toLowerCase().includes(searchTerm)) {
-                return;
-            }
+          let filtered = products.filter(p => !searchTerm || p.name.toLowerCase().includes(searchTerm));
 
-            const isLowStock = p.stock < lowStockThreshold;
-            if(isLowStock) lowStockCount++;
+          filtered.sort((a, b) => {
+              let valA = a[sortCol];
+              let valB = b[sortCol];
+              if (typeof valA === 'string') valA = valA.toLowerCase();
+              if (typeof valB === 'string') valB = valB.toLowerCase();
+              if (valA < valB) return sortAsc ? -1 : 1;
+              if (valA > valB) return sortAsc ? 1 : -1;
+              return 0;
+          });
+
+          filtered.forEach((p) => {
+            const isLowStock = p.stock > 0 && p.stock < lowStockThreshold;
+            const isOutStock = p.stock === 0;
+            if(isLowStock || isOutStock) lowStockCount++;
 
             const tr = document.createElement('tr');
-            if (isLowStock) tr.classList.add('low-stock-row');
             
-            let nameHtml = p.name;
-            if (isLowStock) {
-                nameHtml += `<span class="low-stock-badge" data-i18n="admin_inv_low_badge">Bas</span>`;
+            let statusBadge = `<span class="badge badge-in-stock" data-i18n="status_in_stock">En stock</span>`;
+            if (isOutStock) {
+                statusBadge = `<span class="badge badge-out-stock" data-i18n="status_out_stock">Rupture</span>`;
+            } else if (isLowStock) {
+                statusBadge = `<span class="badge badge-low-stock" data-i18n="status_low_stock">Stock bas</span>`;
             }
 
             tr.innerHTML = `
-              <td>${nameHtml}</td>
+              <td>${p.name}</td>
               <td data-i18n="cat_${p.category.toLowerCase().replace(/ /g, '_')}">${p.category}</td>
-              <td>${p.price}</td>
+              <td>${p.priceStr}</td>
               <td><input type="number" class="stock-input" data-id="${p.id}" value="${p.stock}" min="0"></td>
+              <td>${statusBadge}</td>
             `;
             tbody.appendChild(tr);
           });
           
-          updateLowStockBanner(lowStockCount);
+          updateLowStockBanner();
+          
+          const activeLangBtn = document.querySelector('.lang-switcher button.active');
+          if (activeLangBtn) activeLangBtn.click();
       }
 
-      function updateLowStockBanner(count) {
+      function updateLowStockBanner() {
           const banner = document.getElementById('low-stock-banner');
           const statVal = document.getElementById('stat-low-stock-val');
           
-          // Count total low stock independent of search filter
           let trueLowStockCount = products.filter(p => p.stock < lowStockThreshold).length;
           
           if (trueLowStockCount > 0) {
@@ -267,12 +446,25 @@
 
       document.getElementById('inventory-search').addEventListener('input', renderTable);
 
+      document.querySelectorAll('th.sortable').forEach(th => {
+          th.addEventListener('click', () => {
+              const col = th.getAttribute('data-sort');
+              if (sortCol === col) {
+                  sortAsc = !sortAsc;
+              } else {
+                  sortCol = col;
+                  sortAsc = true;
+              }
+              renderTable();
+          });
+      });
+
       tbody.addEventListener('change', (e) => {
           if (e.target.classList.contains('stock-input')) {
               const id = e.target.getAttribute('data-id');
               const newStock = parseInt(e.target.value, 10);
               const prod = products.find(p => p.id === id);
-              if (prod) {
+              if (prod && !isNaN(newStock)) {
                   prod.stock = newStock;
                   renderTable();
               }
@@ -280,8 +472,65 @@
       });
 
       renderTable();
+
+      // Export CSV
+      document.getElementById('export-csv-btn').addEventListener('click', () => {
+          const lang = localStorage.getItem('site_lang') || 'fr';
+          const alertMsg = (typeof dictionary !== 'undefined' && dictionary['demo_alert_export'] && dictionary['demo_alert_export'][lang]) 
+                           ? dictionary['demo_alert_export'][lang] 
+                           : "Ceci est une démo. L'export CSV a généré un fichier avec les données locales actuelles.";
+          alert(alertMsg);
+          
+          let csvContent = "data:text/csv;charset=utf-8,";
+          csvContent += "ID,Nom,Catégorie,Prix,Stock\n";
+          products.forEach(p => {
+              let row = `${p.id},"${p.name}","${p.category}",${p.price},${p.stock}`;
+              csvContent += row + "\n";
+          });
+          const encodedUri = encodeURI(csvContent);
+          const link = document.createElement("a");
+          link.setAttribute("href", encodedUri);
+          const filename = (typeof dictionary !== 'undefined' && dictionary['admin_export_name'] && dictionary['admin_export_name'][lang]) 
+                           ? dictionary['admin_export_name'][lang] 
+                           : "inventaire_domicile.csv";
+          link.setAttribute("download", filename);
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+      });
+      
+      // Update chart labels on language change
+      document.addEventListener('click', (e) => {
+          const btn = e.target.closest('.lang-switcher button');
+          if (btn && typeof dictionary !== 'undefined') {
+              const lang = (btn.dataset.lang || btn.textContent).trim().toLowerCase();
+              if (lang === 'ar') return;
+              
+              if(charts.visits) {
+                  charts.visits.data.datasets[0].label = dictionary['chart_label_visits']?.[lang] || 'Visites';
+                  charts.visits.data.datasets[1].label = dictionary['chart_label_wa']?.[lang] || 'Clics WhatsApp';
+                  charts.visits.update();
+              }
+              if(charts.traffic) {
+                  charts.traffic.data.labels = [
+                      dictionary['chart_label_direct']?.[lang] || 'Direct',
+                      dictionary['chart_label_wa']?.[lang] || 'WhatsApp',
+                      dictionary['chart_label_social']?.[lang] || 'Social'
+                  ];
+                  charts.traffic.update();
+              }
+              if(charts.category) {
+                  charts.category.data.labels = [
+                      dictionary['chart_label_salon']?.[lang] || 'Salon',
+                      dictionary['chart_label_chambre']?.[lang] || 'Chambre',
+                      dictionary['chart_label_sam']?.[lang] || 'Salle à manger'
+                  ];
+                  charts.category.update();
+              }
+          }
+      });
     });
 </script>
-<script src="assets/js/i18n.js?v=2"></script>
+<script src="assets/js/i18n.js?v=4"></script>
 </body>
 </html>
