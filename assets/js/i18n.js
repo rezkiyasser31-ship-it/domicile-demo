@@ -74,7 +74,7 @@ const dictionary = {
   },
   "str_18": {
     "fr": "Livraison via Yalidine - 58 wilayas",
-    "en": "Livraison via Yalidine - 58 wilayas"
+    "en": "Delivery via Yalidine - 58 wilayas"
   },
   "str_19": {
     "fr": "Liens Utiles",
@@ -254,7 +254,7 @@ const dictionary = {
   },
   "str_63": {
     "fr": "Garantie 2 ans",
-    "en": "Garantie 2 ans"
+    "en": "2 Years Warranty"
   },
   "str_64": {
     "fr": "Contactez-nous directement sur WhatsApp avec les détails de votre projet pour un devis rapide.",
@@ -350,7 +350,7 @@ const dictionary = {
   },
   "str_87": {
     "fr": "Réponse rapide sur WhatsApp",
-    "en": "Réponse rapide sur WhatsApp"
+    "en": "Fast Response on WhatsApp"
   },
   "str_88": {
     "fr": "Commode à 6 tiroirs avec finition mate élégante.",
@@ -418,7 +418,7 @@ const dictionary = {
   },
   "str_104": {
     "fr": "Paiement à la livraison",
-    "en": "Paiement à la livraison"
+    "en": "Cash on Delivery"
   },
   "str_105": {
     "fr": "Commode 'Nocturne'",
@@ -815,6 +815,39 @@ const dictionary = {
   "admin_low_stock_msg_post": {
     "fr": " produit(s) en stock critique !",
     "en": " product(s) in critical stock!"
+  }
+  ,
+  "filter_all_mats": {
+    "fr": "Tous matériaux",
+    "en": "All materials"
+  },
+  "mat_bois": {
+    "fr": "Bois",
+    "en": "Wood"
+  },
+  "mat_velours": {
+    "fr": "Velours",
+    "en": "Velvet"
+  },
+  "mat_metal": {
+    "fr": "Métal",
+    "en": "Metal"
+  },
+  "mat_tissu": {
+    "fr": "Tissu",
+    "en": "Fabric"
+  },
+  "sort_price": {
+    "fr": "Trier par prix",
+    "en": "Sort by price"
+  },
+  "sort_low": {
+    "fr": "Prix croissant",
+    "en": "Price: Low to High"
+  },
+  "sort_high": {
+    "fr": "Prix décroissant",
+    "en": "Price: High to Low"
   }
 };
 

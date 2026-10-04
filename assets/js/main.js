@@ -95,15 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
     applyFilter(category);
   });
 
-  // Language Switcher Placeholder
-  const langBtns = document.querySelectorAll('.lang-switcher button');
-  langBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      if (!btn.classList.contains('active')) {
-        alert('Language switching is coming soon!');
-      }
-    });
-  });
 });
 
 // ---- New Features Added ----
