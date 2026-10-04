@@ -1,0 +1,880 @@
+
+const dictionary = {
+  "str_0": {
+    "fr": "Contact",
+    "en": "Contact"
+  },
+  "str_1": {
+    "fr": "Contact & FAQ | Domicile",
+    "en": "Contact & FAQ | Domicile"
+  },
+  "str_2": {
+    "fr": "Depuis plus de 10 ans, Domicile s'engage à offrir le meilleur du mobilier contemporain à Oran. Notre mission est de transformer chaque maison en un foyer élégant et chaleureux, avec des pièces uniques alliant confort et design.",
+    "en": "Depuis plus de 10 ans, Domicile s'engage à offrir le meilleur du mobilier contemporain à Oran. Notre mission est de transformer chaque maison en un foyer élégant et chaleureux, avec des pièces uniques alliant confort et design."
+  },
+  "str_3": {
+    "fr": "Domicile | Accueil - Meubles de qualité en Algérie",
+    "en": "Domicile | Accueil - Meubles de qualité en Algérie"
+  },
+  "str_4": {
+    "fr": "Attention : <span id=\"low-stock-count\">0</span> produit(s) en stock critique !",
+    "en": "Attention : <span id=\"low-stock-count\">0</span> produit(s) en stock critique !"
+  },
+  "str_5": {
+    "fr": "Domicile Admin",
+    "en": "Domicile Admin"
+  },
+  "str_6": {
+    "fr": "Prix",
+    "en": "Price"
+  },
+  "str_7": {
+    "fr": "Catégorie",
+    "en": "Category"
+  },
+  "str_8": {
+    "fr": "Admin",
+    "en": "Admin"
+  },
+  "str_9": {
+    "fr": "Nos experts montent vos meubles gratuitement directement chez vous.",
+    "en": "Nos experts montent vos meubles gratuitement directement chez vous."
+  },
+  "str_10": {
+    "fr": "Nous livrons partout à Oran et ses environs avec soin et ponctualité.",
+    "en": "Nous livrons partout à Oran et ses environs avec soin et ponctualité."
+  },
+  "str_11": {
+    "fr": "Canapé Modulable 'Sahara' | Domicile",
+    "en": "Canapé Modulable 'Sahara' | Domicile"
+  },
+  "str_12": {
+    "fr": "Produits similaires",
+    "en": "Produits similaires"
+  },
+  "str_13": {
+    "fr": "\"J'ai équipé toute ma chambre chez eux. Superbe qualité et SAV réactif sur WhatsApp. Je recommande !\"",
+    "en": "\"J'ai équipé toute ma chambre chez eux. Superbe qualité et SAV réactif sur WhatsApp. Je recommande !\""
+  },
+  "str_14": {
+    "fr": "Top Produits Vus",
+    "en": "Top Produits Vus"
+  },
+  "str_15": {
+    "fr": "Conseil Déco",
+    "en": "Conseil Déco"
+  },
+  "str_16": {
+    "fr": "Inventaire",
+    "en": "Inventory"
+  },
+  "str_17": {
+    "fr": "Détails du Produit",
+    "en": "Détails du Produit"
+  },
+  "str_18": {
+    "fr": "Livraison via Yalidine - 58 wilayas",
+    "en": "Livraison via Yalidine - 58 wilayas"
+  },
+  "str_19": {
+    "fr": "Liens Utiles",
+    "en": "Liens Utiles"
+  },
+  "str_20": {
+    "fr": "Canapé Modulable 'Sahara'",
+    "en": "Canapé Modulable 'Sahara'"
+  },
+  "str_21": {
+    "fr": "Toutes nos collections",
+    "en": "Toutes nos collections"
+  },
+  "str_22": {
+    "fr": "Appeler",
+    "en": "Appeler"
+  },
+  "str_23": {
+    "fr": "Demander un devis via WhatsApp",
+    "en": "Demander un devis via WhatsApp"
+  },
+  "str_24": {
+    "fr": "Fauteuil contemporain avec pieds en métal noir.",
+    "en": "Fauteuil contemporain avec pieds en métal noir."
+  },
+  "str_25": {
+    "fr": "Paiement à la livraisonLivraison via Yalidine - 58 wilayasGarantie 2 ansRéponse rapide sur WhatsApp",
+    "en": "Paiement à la livraisonLivraison via Yalidine - 58 wilayasGarantie 2 ansRéponse rapide sur WhatsApp"
+  },
+  "str_26": {
+    "fr": "Profondeur",
+    "en": "Profondeur"
+  },
+  "str_27": {
+    "fr": "Paiement à la livraison disponible",
+    "en": "Paiement à la livraison disponible"
+  },
+  "str_28": {
+    "fr": "Visitez notre Showroom",
+    "en": "Visitez notre Showroom"
+  },
+  "str_29": {
+    "fr": "- Yassine, Maraval",
+    "en": "- Yassine, Maraval"
+  },
+  "str_30": {
+    "fr": "Un canapé spacieux et confortable avec revêtement anti-tâches.",
+    "en": "Un canapé spacieux et confortable avec revêtement anti-tâches."
+  },
+  "str_31": {
+    "fr": "WhatsApp",
+    "en": "WhatsApp"
+  },
+  "str_32": {
+    "fr": "Comment obtenir un devis personnalisé ?+",
+    "en": "Comment obtenir un devis personnalisé ?+"
+  },
+  "str_33": {
+    "fr": "Le mobilier chic et moderne pour sublimer votre intérieur à Oran.",
+    "en": "Le mobilier chic et moderne pour sublimer votre intérieur à Oran."
+  },
+  "str_34": {
+    "fr": "Ceci est une démo. Mot de passe : domicile2026",
+    "en": "Ceci est une démo. Mot de passe : domicile2026"
+  },
+  "str_35": {
+    "fr": "Connexion Admin",
+    "en": "Connexion Admin"
+  },
+  "str_36": {
+    "fr": "- Sarah, Centre-ville",
+    "en": "- Sarah, Centre-ville"
+  },
+  "str_37": {
+    "fr": "Une question ? N'hésitez pas à nous écrire.",
+    "en": "Une question ? N'hésitez pas à nous écrire."
+  },
+  "str_38": {
+    "fr": "Fauteuil d'Accent 'Zian'",
+    "en": "Fauteuil d'Accent 'Zian'"
+  },
+  "str_39": {
+    "fr": "Nous contacter",
+    "en": "Nous contacter"
+  },
+  "str_40": {
+    "fr": "Produit",
+    "en": "Product"
+  },
+  "str_41": {
+    "fr": "Itinéraire",
+    "en": "Itinéraire"
+  },
+  "str_42": {
+    "fr": "Salons",
+    "en": "Living Rooms"
+  },
+  "str_43": {
+    "fr": "Tableau de bord",
+    "en": "Dashboard"
+  },
+  "str_44": {
+    "fr": "Nos Nouveautés",
+    "en": "Nos Nouveautés"
+  },
+  "str_45": {
+    "fr": "Avis de nos clients",
+    "en": "Avis de nos clients"
+  },
+  "str_46": {
+    "fr": "Stock",
+    "en": "Stock"
+  },
+  "str_47": {
+    "fr": "Voir toutes les collections",
+    "en": "View All Collections"
+  },
+  "str_48": {
+    "fr": "Livraison Rapide",
+    "en": "Livraison Rapide"
+  },
+  "str_49": {
+    "fr": "Hauteur",
+    "en": "Hauteur"
+  },
+  "str_50": {
+    "fr": "Inventaire des Produits",
+    "en": "Inventaire des Produits"
+  },
+  "str_51": {
+    "fr": "- Amira, Akid Lotfi",
+    "en": "- Amira, Akid Lotfi"
+  },
+  "str_52": {
+    "fr": "Showroom",
+    "en": "Showroom"
+  },
+  "str_53": {
+    "fr": "Déconnexion",
+    "en": "Logout"
+  },
+  "str_54": {
+    "fr": "Paiement à la livraison disponibleLivraison via Yalidine - 58 wilayasGarantie 2 ansRéponse rapide sur WhatsApp",
+    "en": "Paiement à la livraison disponibleLivraison via Yalidine - 58 wilayasGarantie 2 ansRéponse rapide sur WhatsApp"
+  },
+  "str_55": {
+    "fr": "Quelle est votre politique de retour et d'échange ?+",
+    "en": "Quelle est votre politique de retour et d'échange ?+"
+  },
+  "str_56": {
+    "fr": "Message",
+    "en": "Message"
+  },
+  "str_57": {
+    "fr": "Table à Manger 'Oran'",
+    "en": "Table à Manger 'Oran'"
+  },
+  "str_58": {
+    "fr": "- Karim, Es Sénia",
+    "en": "- Karim, Es Sénia"
+  },
+  "str_59": {
+    "fr": "Oui, le paiement à la livraison est disponible pour toutes vos commandes sur l'ensemble du territoire.",
+    "en": "Oui, le paiement à la livraison est disponible pour toutes vos commandes sur l'ensemble du territoire."
+  },
+  "str_60": {
+    "fr": "Voir la collection",
+    "en": "View Collection"
+  },
+  "str_61": {
+    "fr": "À Propos | Domicile",
+    "en": "À Propos | Domicile"
+  },
+  "str_62": {
+    "fr": "Vue d'ensemble",
+    "en": "Overview"
+  },
+  "str_63": {
+    "fr": "Garantie 2 ans",
+    "en": "Garantie 2 ans"
+  },
+  "str_64": {
+    "fr": "Contactez-nous directement sur WhatsApp avec les détails de votre projet pour un devis rapide.",
+    "en": "Contactez-nous directement sur WhatsApp avec les détails de votre projet pour un devis rapide."
+  },
+  "str_65": {
+    "fr": "Envoyer",
+    "en": "Send"
+  },
+  "str_66": {
+    "fr": "Visites ce mois",
+    "en": "Visites ce mois"
+  },
+  "str_67": {
+    "fr": "Table en noyer massif pour 8 personnes avec chaises assorties.",
+    "en": "Table en noyer massif pour 8 personnes avec chaises assorties."
+  },
+  "str_68": {
+    "fr": "Tous nos produits bénéficient d'une garantie de 2 ans contre les défauts de fabrication.",
+    "en": "Tous nos produits bénéficient d'une garantie de 2 ans contre les défauts de fabrication."
+  },
+  "str_69": {
+    "fr": "Nos Services | Domicile",
+    "en": "Nos Services | Domicile"
+  },
+  "str_70": {
+    "fr": "Salon",
+    "en": "Living Room"
+  },
+  "str_71": {
+    "fr": "Un canapé spacieux et confortable avec revêtement anti-tâches, parfait pour votre salon. Structure en bois massif, assises en mousse haute résilience.",
+    "en": "Un canapé spacieux et confortable avec revêtement anti-tâches, parfait pour votre salon. Structure en bois massif, assises en mousse haute résilience."
+  },
+  "str_72": {
+    "fr": "Notre Histoire",
+    "en": "Notre Histoire"
+  },
+  "str_73": {
+    "fr": "Collections | Domicile - Tous nos meubles",
+    "en": "Collections | Domicile - Tous nos meubles"
+  },
+  "str_74": {
+    "fr": "Table À Manger 'Oran'",
+    "en": "Table À Manger 'Oran'"
+  },
+  "str_75": {
+    "fr": "\"Rien à dire, les finitions de la table à manger sont magnifiques. L'équipe est très professionnelle.\"",
+    "en": "\"Rien à dire, les finitions de la table à manger sont magnifiques. L'équipe est très professionnelle.\""
+  },
+  "str_76": {
+    "fr": "Domicile",
+    "en": "Domicile"
+  },
+  "str_77": {
+    "fr": "Tout",
+    "en": "All"
+  },
+  "str_78": {
+    "fr": "Proposez-vous le paiement à la livraison (COD) ?+",
+    "en": "Proposez-vous le paiement à la livraison (COD) ?+"
+  },
+  "str_79": {
+    "fr": "Toutes les catégories",
+    "en": "Toutes les catégories"
+  },
+  "str_80": {
+    "fr": "Nos services",
+    "en": "Our services"
+  },
+  "str_81": {
+    "fr": "Lun-Sam: 09h00 - 19h00",
+    "en": "Lun-Sam: 09h00 - 19h00"
+  },
+  "str_82": {
+    "fr": "Un accompagnement sur-mesure pour aménager votre intérieur selon vos envies.",
+    "en": "Un accompagnement sur-mesure pour aménager votre intérieur selon vos envies."
+  },
+  "str_83": {
+    "fr": "Quels sont les délais de livraison ?+",
+    "en": "Quels sont les délais de livraison ?+"
+  },
+  "str_84": {
+    "fr": "Ouvert du Lundi au Samedi de 09h00 à 19h00",
+    "en": "Ouvert du Lundi au Samedi de 09h00 à 19h00"
+  },
+  "str_85": {
+    "fr": "Installation Gratuite",
+    "en": "Installation Gratuite"
+  },
+  "str_86": {
+    "fr": "123 Rue de la Liberté, Oran",
+    "en": "123 Rue de la Liberté, Oran"
+  },
+  "str_87": {
+    "fr": "Réponse rapide sur WhatsApp",
+    "en": "Réponse rapide sur WhatsApp"
+  },
+  "str_88": {
+    "fr": "Commode à 6 tiroirs avec finition mate élégante.",
+    "en": "Commode à 6 tiroirs avec finition mate élégante."
+  },
+  "str_89": {
+    "fr": "Nos Services",
+    "en": "Our Services"
+  },
+  "str_90": {
+    "fr": "Accueil",
+    "en": "Home"
+  },
+  "str_91": {
+    "fr": "Notre Showroom | Domicile",
+    "en": "Notre Showroom | Domicile"
+  },
+  "str_92": {
+    "fr": "Administration | Domicile",
+    "en": "Administration | Domicile"
+  },
+  "str_93": {
+    "fr": "Se connecter",
+    "en": "Login"
+  },
+  "str_94": {
+    "fr": "\"Un service impeccable. La livraison à Oran s'est faite en un temps record via Yalidine, et le canapé est sublime.\"",
+    "en": "\"Un service impeccable. La livraison à Oran s'est faite en un temps record via Yalidine, et le canapé est sublime.\""
+  },
+  "str_95": {
+    "fr": "Mes Favoris (0)",
+    "en": "Mes Favoris (0)"
+  },
+  "str_96": {
+    "fr": "+213 555 00 00 00",
+    "en": "+213 555 00 00 00"
+  },
+  "str_97": {
+    "fr": "Collections",
+    "en": "Collections"
+  },
+  "str_98": {
+    "fr": "Nous livrons via Yalidine dans un délai de 2 à 5 jours ouvrables pour les 58 wilayas.",
+    "en": "Nous livrons via Yalidine dans un délai de 2 à 5 jours ouvrables pour les 58 wilayas."
+  },
+  "str_99": {
+    "fr": "Questions Fréquentes (FAQ)",
+    "en": "Questions Fréquentes (FAQ)"
+  },
+  "str_100": {
+    "fr": "Buffet 'Méditerranée'",
+    "en": "Buffet 'Méditerranée'"
+  },
+  "str_101": {
+    "fr": "Dimensions (cm)",
+    "en": "Dimensions (cm)"
+  },
+  "str_102": {
+    "fr": "L\\'élégance à portée de main",
+    "en": "L\\'élégance à portée de main"
+  },
+  "str_103": {
+    "fr": "Voir sur Google Maps",
+    "en": "Voir sur Google Maps"
+  },
+  "str_104": {
+    "fr": "Paiement à la livraison",
+    "en": "Paiement à la livraison"
+  },
+  "str_105": {
+    "fr": "Commode 'Nocturne'",
+    "en": "Commode 'Nocturne'"
+  },
+  "str_106": {
+    "fr": "Vous disposez de 7 jours après la réception pour demander un échange ou un retour si le produit ne correspond pas à vos attentes.",
+    "en": "Vous disposez de 7 jours après la réception pour demander un échange ou un retour si le produit ne correspond pas à vos attentes."
+  },
+  "str_107": {
+    "fr": "Lit King Size 'Atlas'",
+    "en": "Lit King Size 'Atlas'"
+  },
+  "str_108": {
+    "fr": "Mot de passe incorrect",
+    "en": "Mot de passe incorrect"
+  },
+  "str_109": {
+    "fr": "\"La qualité du bois est exceptionnelle. Très satisfaite de mon achat, et le paiement à la livraison m'a beaucoup rassurée.\"",
+    "en": "\"La qualité du bois est exceptionnelle. Très satisfaite de mon achat, et le paiement à la livraison m'a beaucoup rassurée.\""
+  },
+  "str_110": {
+    "fr": "Largeur",
+    "en": "Largeur"
+  },
+  "str_111": {
+    "fr": "Articles stock bas",
+    "en": "Articles stock bas"
+  },
+  "str_112": {
+    "fr": "Email",
+    "en": "Email"
+  },
+  "str_113": {
+    "fr": "Salles à manger",
+    "en": "Dining Rooms"
+  },
+  "str_114": {
+    "fr": "Salle à manger",
+    "en": "Dining Room"
+  },
+  "str_115": {
+    "fr": "Canapé 'Sahara'Lit 'Atlas'",
+    "en": "Canapé 'Sahara'Lit 'Atlas'"
+  },
+  "str_116": {
+    "fr": "Chambre",
+    "en": "Bedroom"
+  },
+  "str_117": {
+    "fr": "Tête de lit en velours et sommier robuste avec rangement intégré.",
+    "en": "Tête de lit en velours et sommier robuste avec rangement intégré."
+  },
+  "str_118": {
+    "fr": "Quelle est la durée de la garantie ?+",
+    "en": "Quelle est la durée de la garantie ?+"
+  },
+  "str_119": {
+    "fr": "Chambres",
+    "en": "Bedrooms"
+  },
+  "str_120": {
+    "fr": "Clics WhatsApp",
+    "en": "Clics WhatsApp"
+  },
+  "str_121": {
+    "fr": "Contactez-nous",
+    "en": "Contactez-nous"
+  },
+  "str_122": {
+    "fr": "Visites (7 derniers jours)",
+    "en": "Visites (7 derniers jours)"
+  },
+  "str_123": {
+    "fr": "À propos de nous",
+    "en": "À propos de nous"
+  },
+  "str_124": {
+    "fr": "Nom",
+    "en": "Name"
+  },
+  "str_125": {
+    "fr": "Buffet de rangement spacieux avec portes coulissantes.",
+    "en": "Buffet de rangement spacieux avec portes coulissantes."
+  },
+  "str_126": {
+    "fr": "Découvrez notre collection de meubles chics et contemporains pour sublimer votre intérieur à Oran.",
+    "en": "Découvrez notre collection de meubles chics et contemporains pour sublimer votre intérieur à Oran."
+  },
+  "admin_login_pwd_placeholder": {
+    "fr": "Mot de passe",
+    "en": "Password"
+  },
+  "admin_inv_search_placeholder": {
+    "fr": "Rechercher un produit...",
+    "en": "Search a product..."
+  },
+  "admin_brand": {
+    "fr": "Domicile Admin",
+    "en": "Domicile Admin"
+  },
+  "admin_login_title": {
+    "fr": "Connexion Admin",
+    "en": "Admin Login"
+  },
+  "admin_login_demo": {
+    "fr": "Ceci est une démo. Mot de passe : domicile2026",
+    "en": "This is a demo. Password: domicile2026"
+  },
+  "admin_login_btn": {
+    "fr": "Se connecter",
+    "en": "Login"
+  },
+  "admin_login_err": {
+    "fr": "Mot de passe incorrect",
+    "en": "Incorrect password"
+  },
+  "admin_dashboard_title": {
+    "fr": "Tableau de bord",
+    "en": "Dashboard"
+  },
+  "admin_logout_btn": {
+    "fr": "Déconnexion",
+    "en": "Logout"
+  },
+  "admin_tab_overview": {
+    "fr": "Vue d'ensemble",
+    "en": "Overview"
+  },
+  "admin_tab_inventory": {
+    "fr": "Inventaire",
+    "en": "Inventory"
+  },
+  "admin_low_stock_msg": {
+    "fr": "Attention : produit(s) en stock critique !",
+    "en": "Warning : critical stock product(s)!"
+  },
+  "admin_stat_visits": {
+    "fr": "Visites ce mois",
+    "en": "Visits this month"
+  },
+  "admin_stat_wa": {
+    "fr": "Clics WhatsApp",
+    "en": "WhatsApp Clicks"
+  },
+  "admin_stat_lowstock": {
+    "fr": "Articles stock bas",
+    "en": "Low stock items"
+  },
+  "admin_stat_top": {
+    "fr": "Top Produits Vus",
+    "en": "Top Viewed Products"
+  },
+  "admin_chart_title": {
+    "fr": "Visites (7 derniers jours)",
+    "en": "Visits (Last 7 days)"
+  },
+  "admin_inv_title": {
+    "fr": "Inventaire des Produits",
+    "en": "Product Inventory"
+  },
+  "admin_inv_th_prod": {
+    "fr": "Produit",
+    "en": "Product"
+  },
+  "admin_inv_th_cat": {
+    "fr": "Catégorie",
+    "en": "Category"
+  },
+  "admin_inv_th_price": {
+    "fr": "Prix",
+    "en": "Price"
+  },
+  "admin_inv_th_stock": {
+    "fr": "Stock",
+    "en": "Stock"
+  },
+  "admin_inv_low_badge": {
+    "fr": "Bas",
+    "en": "Low"
+  },
+  "cat_salon": {
+    "fr": "Salon",
+    "en": "Living Room"
+  },
+  "cat_chambre": {
+    "fr": "Chambre",
+    "en": "Bedroom"
+  },
+  "cat_salle_à_manger": {
+    "fr": "Salle à manger",
+    "en": "Dining Room"
+  },
+  "nav_home": {
+    "fr": "Accueil",
+    "en": "Home"
+  },
+  "nav_collections": {
+    "fr": "Collections",
+    "en": "Collections"
+  },
+  "nav_showroom": {
+    "fr": "Showroom",
+    "en": "Showroom"
+  },
+  "nav_contact": {
+    "fr": "Contact",
+    "en": "Contact"
+  },
+  "nav_favorites": {
+    "fr": "Mes Favoris",
+    "en": "My Favorites"
+  },
+  "footer_about": {
+    "fr": "À propos de nous",
+    "en": "About Us"
+  },
+  "footer_services": {
+    "fr": "Nos services",
+    "en": "Our Services"
+  },
+  "footer_contact": {
+    "fr": "Nous contacter",
+    "en": "Contact Us"
+  },
+  "footer_admin": {
+    "fr": "Admin",
+    "en": "Admin"
+  },
+  "filter_all": {
+    "fr": "Tout",
+    "en": "All"
+  },
+  "filter_salon": {
+    "fr": "Salon",
+    "en": "Living Room"
+  },
+  "filter_bedroom": {
+    "fr": "Chambre",
+    "en": "Bedroom"
+  },
+  "filter_dining": {
+    "fr": "Salle à manger",
+    "en": "Dining Room"
+  },
+  "btn_view_all": {
+    "fr": "Voir toutes les collections",
+    "en": "View All Collections"
+  },
+  "btn_view_coll": {
+    "fr": "Voir la collection",
+    "en": "View Collection"
+  },
+  "btn_send": {
+    "fr": "Envoyer",
+    "en": "Send"
+  },
+  "hero_title": {
+    "fr": "L'élégance à portée de main",
+    "en": "Elegance at your fingertips"
+  },
+  "hero_subtitle": {
+    "fr": "Découvrez notre collection de meubles chics et contemporains pour sublimer votre intérieur à Oran.",
+    "en": "Discover our collection of chic and contemporary furniture to enhance your interior in Oran."
+  },
+  "testimonials_title": {
+    "fr": "Avis de nos clients",
+    "en": "Customer Reviews"
+  },
+  "new_arrivals_title": {
+    "fr": "Nos Nouveautés",
+    "en": "New Arrivals"
+  },
+  "footer_useful_links": {
+    "fr": "Liens Utiles",
+    "en": "Useful Links"
+  },
+  "footer_desc": {
+    "fr": "Le mobilier chic et moderne pour sublimer votre intérieur à Oran.",
+    "en": "Chic and modern furniture to enhance your interior in Oran."
+  },
+  "mobile_call": {
+    "fr": "Appeler",
+    "en": "Call"
+  },
+  "mobile_wa": {
+    "fr": "WhatsApp",
+    "en": "WhatsApp"
+  },
+  "mobile_route": {
+    "fr": "Itinéraire",
+    "en": "Route"
+  },
+  "badge_cod": {
+    "fr": "Paiement à la livraison",
+    "en": "Cash on Delivery"
+  },
+  "badge_delivery": {
+    "fr": "Livraison via Yalidine - 58 wilayas",
+    "en": "Delivery via Yalidine - 58 wilayas"
+  },
+  "badge_warranty": {
+    "fr": "Garantie 2 ans",
+    "en": "2 Years Warranty"
+  },
+  "badge_wa": {
+    "fr": "Réponse rapide sur WhatsApp",
+    "en": "Fast Response on WhatsApp"
+  },
+  "faq_title": {
+    "fr": "Questions Fréquentes (FAQ)",
+    "en": "Frequently Asked Questions (FAQ)"
+  },
+  "product_details": {
+    "fr": "Détails du Produit",
+    "en": "Product Details"
+  },
+  "product_dims": {
+    "fr": "Dimensions (cm)",
+    "en": "Dimensions (cm)"
+  },
+  "dim_w": {
+    "fr": "Largeur",
+    "en": "Width"
+  },
+  "dim_h": {
+    "fr": "Hauteur",
+    "en": "Height"
+  },
+  "dim_d": {
+    "fr": "Profondeur",
+    "en": "Depth"
+  },
+  "similar_products": {
+    "fr": "Produits similaires",
+    "en": "Similar Products"
+  },
+  "all_collections_title": {
+    "fr": "Toutes nos collections",
+    "en": "All our collections"
+  },
+  "filter_all_cats": {
+    "fr": "Toutes les catégories",
+    "en": "All categories"
+  },
+  "filter_salons": {
+    "fr": "Salons",
+    "en": "Living Rooms"
+  },
+  "filter_bedrooms": {
+    "fr": "Chambres",
+    "en": "Bedrooms"
+  },
+  "filter_dinings": {
+    "fr": "Salles à manger",
+    "en": "Dining Rooms"
+  },
+  "filter_price": {
+    "fr": "Prix",
+    "en": "Price"
+  },
+  "about_history": {
+    "fr": "Notre Histoire",
+    "en": "Our History"
+  },
+  "showroom_visit": {
+    "fr": "Visitez notre Showroom",
+    "en": "Visit our Showroom"
+  },
+  "services_title": {
+    "fr": "Nos Services",
+    "en": "Our Services"
+  },
+  "srv_delivery": {
+    "fr": "Livraison Rapide",
+    "en": "Fast Delivery"
+  },
+  "srv_install": {
+    "fr": "Installation Gratuite",
+    "en": "Free Installation"
+  },
+  "srv_deco": {
+    "fr": "Conseil Déco",
+    "en": "Deco Advice"
+  },
+  "contact_title": {
+    "fr": "Contactez-nous",
+    "en": "Contact Us"
+  },
+  "admin_low_stock_msg_pre": {
+    "fr": "Attention : ",
+    "en": "Warning: "
+  },
+  "admin_low_stock_msg_post": {
+    "fr": " produit(s) en stock critique !",
+    "en": " product(s) in critical stock!"
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('site_lang') || 'fr';
+    
+    function setLanguage(lang) {
+        if(lang === 'ar') {
+            alert('Coming soon!');
+            return;
+        }
+        localStorage.setItem('site_lang', lang);
+        
+        // Update html lang
+        document.documentElement.lang = lang;
+        
+        // Update buttons
+        document.querySelectorAll('.lang-switcher button').forEach(btn => {
+            if (btn.textContent.toLowerCase() === lang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Update texts
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (dictionary[key] && dictionary[key][lang]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = dictionary[key][lang];
+                } else {
+                    const svg = el.querySelector('svg');
+                    if(svg) {
+                         el.innerHTML = '';
+                         el.appendChild(svg);
+                         el.appendChild(document.createTextNode(' ' + dictionary[key][lang]));
+                    } else {
+                         el.textContent = dictionary[key][lang];
+                    }
+                }
+            }
+        });
+        
+        // Update placeholders
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (dictionary[key] && dictionary[key][lang]) {
+                el.placeholder = dictionary[key][lang];
+            }
+        });
+    }
+
+    setLanguage(savedLang);
+
+    // Delegate click for language switcher (since some are added dynamically or there are multiple)
+    document.addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON' && e.target.closest('.lang-switcher')) {
+            const lang = e.target.textContent.toLowerCase();
+            setLanguage(lang);
+        }
+    });
+});

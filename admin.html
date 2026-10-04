@@ -1,77 +1,161 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html dir="ltr" lang="fr">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Administration | Domicile</title>
+<title data-i18n="str_92">Administration | Domicile</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="assets/css/styles.css" rel="stylesheet"/>
 <style>
     #admin-dashboard { display: none; }
+    
+    /* Layout */
+    .dashboard-layout { display: flex; flex-direction: column; gap: 2rem; }
+    @media(min-width: 768px) {
+        .dashboard-layout { flex-direction: row; }
+        .dashboard-sidebar { width: 250px; flex-shrink: 0; }
+        .dashboard-content { flex-grow: 1; }
+    }
+    
+    /* Sidebar Navigation */
+    .dashboard-nav { display: flex; flex-direction: column; gap: 0.5rem; background: var(--color-ivory, #FAF9F6); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--color-sand, #E6E2DD); }
+    .nav-tab { padding: 0.75rem 1rem; cursor: pointer; border-radius: 4px; font-weight: 600; text-align: left; background: transparent; border: none; font-family: 'Cairo', sans-serif; color: var(--color-charcoal, #333); transition: all 0.2s;}
+    .nav-tab:hover { background: var(--color-sand, #E6E2DD); }
+    .nav-tab.active { background: var(--color-red, #8B2635); color: white; }
+    
+    /* Tab Contents */
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    /* Stats */
     .admin-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
     .stat-card { background: var(--color-ivory, #FAF9F6); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--color-sand, #E6E2DD); text-align: center; }
     .stat-card h3 { font-size: 2rem; color: var(--color-red, #8B2635); margin-bottom: 0.5rem; }
     .stat-card p { font-size: 0.875rem; color: var(--color-charcoal, #333); }
+    
+    /* Low stock alert */
+    #low-stock-banner { display: none; background-color: #FEF2F2; color: #991B1B; padding: 1rem; border-radius: 8px; border: 1px solid #F87171; margin-bottom: 1.5rem; font-weight: 600; text-align: center; }
+    
+    /* Inventory Table */
     .inventory-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
     .inventory-table th, .inventory-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--color-sand, #E6E2DD); }
-    .inventory-table th { font-family: 'Fraunces', serif; background: var(--color-ivory, #FAF9F6); }
-    .stock-input { width: 60px; padding: 0.25rem; border: 1px solid #ccc; border-radius: 4px; }
-  </style>
+    .inventory-table th { font-family: 'Playfair Display', serif; background: var(--color-ivory, #FAF9F6); }
+    .stock-input { width: 80px; padding: 0.25rem; border: 1px solid #ccc; border-radius: 4px; }
+    .low-stock-row { color: #991B1B; background-color: #FEF2F2; }
+    .low-stock-badge { display: inline-block; background-color: #991B1B; color: white; padding: 0.1rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: bold; margin-left: 0.5rem; }
+
+    /* Sparkline */
+    .sparkline-container { background: var(--color-ivory, #FAF9F6); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--color-sand, #E6E2DD); margin-bottom: 2rem; }
+</style>
 <meta content="Espace d'administration Domicile." name="description"/></head>
 <body>
 <!-- Header -->
 <header class="site-header">
-<div class="container header-inner">
+<div class="container header-inner" style="display: flex; justify-content: space-between; align-items: center;">
 <a class="brand" href="index.html">
-<div class="brand-wordmark">Domicile Admin</div>
+<div class="brand-wordmark" data-i18n="admin_brand">Domicile Admin</div>
 </a>
+<div class="flex items-center gap-4">
+<div class="lang-switcher">
+<button class="active" data-lang="fr">FR</button>
+<button data-lang="ar">AR</button>
+<button data-lang="en">EN</button>
+</div>
+</div>
 </div>
 </header>
 <main class="container" style="padding-block: 4rem; min-height: 70vh;">
-<!-- NOTE: This is a DEMO/MOCK admin page. There is no real security or backend! -->
-<div id="login-section" style="max-width: 400px; margin: 0 auto; text-align: center; background: var(--color-ivory); padding: 2rem; border-radius: 8px; border: 1px solid var(--color-sand);">
-<h2 style="margin-bottom: 1rem;">Connexion Admin</h2>
-<p style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #666;">Ceci est une démo. Mot de passe : domicile2026</p>
-<input id="admin-pwd" placeholder="Mot de passe" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px;" type="password"/>
-<button class="btn" id="login-btn" style="width: 100%;">Se connecter</button>
-<p id="login-err" style="color: red; display: none; margin-top: 1rem; font-size: 0.875rem;">Mot de passe incorrect</p>
+<div id="login-section" style="max-width: 400px; margin: 0 auto; text-align: center; background: var(--color-ivory, #FAF9F6); padding: 2rem; border-radius: 8px; border: 1px solid var(--color-sand, #E6E2DD);">
+<h2 data-i18n="admin_login_title" style="margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Connexion Admin</h2>
+<p data-i18n="admin_login_demo" style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #666;">Ceci est une démo. Mot de passe : domicile2026</p>
+<input data-i18n-placeholder="admin_login_pwd_placeholder" id="admin-pwd" placeholder="Mot de passe" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px;" type="password"/>
+<button class="btn" data-i18n="admin_login_btn" id="login-btn" style="width: 100%;">Se connecter</button>
+<p data-i18n="admin_login_err" id="login-err" style="color: red; display: none; margin-top: 1rem; font-size: 0.875rem;">Mot de passe incorrect</p>
 </div>
 <div id="admin-dashboard">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-<h2>Tableau de bord</h2>
-<button class="btn btn-secondary" id="logout-btn">Déconnexion</button>
+<h2 data-i18n="admin_dashboard_title" style="font-family: 'Playfair Display', serif;">Tableau de bord</h2>
+<button class="btn btn-secondary" data-i18n="admin_logout_btn" id="logout-btn">Déconnexion</button>
 </div>
+<div class="dashboard-layout">
+<aside class="dashboard-sidebar">
+<nav class="dashboard-nav">
+<button class="nav-tab active" data-i18n="admin_tab_overview" data-target="overview-tab">Vue d'ensemble</button>
+<button class="nav-tab" data-i18n="admin_tab_inventory" data-target="inventory-tab">Inventaire</button>
+</nav>
+</aside>
+<section class="dashboard-content">
+<!-- Alert Banner -->
+<div id="low-stock-banner">
+<span data-i18n="admin_low_stock_msg_pre">Attention : </span><span id="low-stock-count">0</span><span data-i18n="admin_low_stock_msg_post"> produit(s) en stock critique !</span> produit(s) en stock critique !</span>
+</div>
+<!-- Overview Tab -->
+<div class="tab-pane active" id="overview-tab">
 <div class="admin-stats">
 <div class="stat-card">
 <h3>1,245</h3>
-<p>Visites ce mois</p>
+<p data-i18n="admin_stat_visits">Visites ce mois</p>
 </div>
 <div class="stat-card">
 <h3>84</h3>
-<p>Clics WhatsApp</p>
+<p data-i18n="admin_stat_wa">Clics WhatsApp</p>
 </div>
 <div class="stat-card">
-<h3 style="font-size: 1.25rem; line-height: 1.2; margin-top: 0.5rem;">Canapé 'Sahara'<br/>Lit 'Atlas'</h3>
-<p style="margin-top: 0.5rem;">Top Produits Vus</p>
+<h3 id="stat-low-stock-val">0</h3>
+<p data-i18n="admin_stat_lowstock">Articles stock bas</p>
+</div>
+<div class="stat-card">
+<h3 data-i18n="str_115" style="font-size: 1.25rem; line-height: 1.2; margin-top: 0.5rem;">Canapé 'Sahara'<br/>Lit 'Atlas'</h3>
+<p data-i18n="admin_stat_top" style="margin-top: 0.5rem;">Top Produits Vus</p>
 </div>
 </div>
-<h3>Inventaire des Produits</h3>
+<div class="sparkline-container">
+<h3 data-i18n="admin_chart_title" style="font-size: 1.25rem; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Visites (7 derniers jours)</h3>
+<svg preserveaspectratio="none" style="width: 100%; height: auto; max-height: 200px;" viewbox="0 0 400 100">
+<!-- Background Grid -->
+<line stroke="#E6E2DD" stroke-width="1" x1="0" x2="400" y1="20" y2="20"></line>
+<line stroke="#E6E2DD" stroke-width="1" x1="0" x2="400" y1="50" y2="50"></line>
+<line stroke="#E6E2DD" stroke-width="1" x1="0" x2="400" y1="80" y2="80"></line>
+<!-- Line Chart -->
+<polyline fill="none" points="0,80 50,60 100,75 150,40 200,30 250,55 300,20 350,15 400,10" stroke="#8B2635" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<!-- Data Points -->
+<circle cx="0" cy="80" fill="#8B2635" r="4"></circle>
+<circle cx="50" cy="60" fill="#8B2635" r="4"></circle>
+<circle cx="100" cy="75" fill="#8B2635" r="4"></circle>
+<circle cx="150" cy="40" fill="#8B2635" r="4"></circle>
+<circle cx="200" cy="30" fill="#8B2635" r="4"></circle>
+<circle cx="250" cy="55" fill="#8B2635" r="4"></circle>
+<circle cx="300" cy="20" fill="#8B2635" r="4"></circle>
+<circle cx="350" cy="15" fill="#8B2635" r="4"></circle>
+<circle cx="400" cy="10" fill="#8B2635" r="4"></circle>
+</svg>
+</div>
+</div>
+<!-- Inventory Tab -->
+<div class="tab-pane" id="inventory-tab">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+<h3 data-i18n="admin_inv_title" style="font-family: 'Playfair Display', serif;">Inventaire des Produits</h3>
+<input data-i18n-placeholder="admin_inv_search_placeholder" id="inventory-search" placeholder="Rechercher un produit..." style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; width: 100%; max-width: 300px;" type="text"/>
+</div>
 <div style="overflow-x: auto;">
 <table class="inventory-table">
 <thead>
 <tr>
-<th>Produit</th>
-<th>Catégorie</th>
-<th>Prix</th>
-<th>Stock</th>
+<th data-i18n="admin_inv_th_prod">Produit</th>
+<th data-i18n="admin_inv_th_cat">Catégorie</th>
+<th data-i18n="filter_price">Prix</th>
+<th data-i18n="admin_inv_th_stock">Stock</th>
 </tr>
 </thead>
 <tbody id="inventory-body">
 <!-- Populated by JS -->
 </tbody>
 </table>
+</div>
+</div>
+</section>
 </div>
 </div>
 </main>
@@ -100,28 +184,104 @@
         loginSection.style.display = 'block';
       });
 
+      // Tabs Logic
+      const navTabs = document.querySelectorAll('.nav-tab');
+      const tabPanes = document.querySelectorAll('.tab-pane');
+      
+      navTabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+              // Remove active from all tabs
+              navTabs.forEach(t => t.classList.remove('active'));
+              tabPanes.forEach(p => p.classList.remove('active'));
+              
+              // Add active to current
+              tab.classList.add('active');
+              const target = document.getElementById(tab.getAttribute('data-target'));
+              if(target) target.classList.add('active');
+          });
+      });
+
       // Mock Inventory Data
       const products = [
-        { name: "Canapé Modulable 'Sahara'", category: "Salon", price: "120 000 DA", stock: 3 },
-        { name: "Lit King Size 'Atlas'", category: "Chambre", price: "220 000 DA", stock: 2 },
-        { name: "Table à Manger 'Oran'", category: "Salle à manger", price: "150 000 DA", stock: 5 },
-        { name: "Fauteuil d'Accent 'Zian'", category: "Salon", price: "35 000 DA", stock: 12 },
-        { name: "Commode 'Nocturne'", category: "Chambre", price: "85 000 DA", stock: 4 },
-        { name: "Buffet 'Méditerranée'", category: "Salle à manger", price: "95 000 DA", stock: 7 }
+        { id: 'p1', name: "Canapé Modulable 'Sahara'", category: "Salon", price: "120 000 DA", stock: 3 },
+        { id: 'p2', name: "Lit King Size 'Atlas'", category: "Chambre", price: "220 000 DA", stock: 2 },
+        { id: 'p3', name: "Table à Manger 'Oran'", category: "Salle à manger", price: "150 000 DA", stock: 8 },
+        { id: 'p4', name: "Fauteuil d'Accent 'Zian'", category: "Salon", price: "35 000 DA", stock: 12 },
+        { id: 'p5', name: "Commode 'Nocturne'", category: "Chambre", price: "85 000 DA", stock: 4 },
+        { id: 'p6', name: "Buffet 'Méditerranée'", category: "Salle à manger", price: "95 000 DA", stock: 7 }
       ];
 
       const tbody = document.getElementById('inventory-body');
-      products.forEach((p, idx) => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${p.name}</td>
-          <td>${p.category}</td>
-          <td>${p.price}</td>
-          <td><input type="number" class="stock-input" value="${p.stock}" min="0"></td>
-        `;
-        tbody.appendChild(tr);
+      const lowStockThreshold = 5;
+      
+      function renderTable() {
+          tbody.innerHTML = '';
+          let lowStockCount = 0;
+          
+          const searchTerm = document.getElementById('inventory-search').value.toLowerCase();
+
+          products.forEach((p, idx) => {
+            if(searchTerm && !p.name.toLowerCase().includes(searchTerm)) {
+                return;
+            }
+
+            const isLowStock = p.stock < lowStockThreshold;
+            if(isLowStock) lowStockCount++;
+
+            const tr = document.createElement('tr');
+            if (isLowStock) tr.classList.add('low-stock-row');
+            
+            let nameHtml = p.name;
+            if (isLowStock) {
+                nameHtml += `<span class="low-stock-badge" data-i18n="admin_inv_low_badge">Bas</span>`;
+            }
+
+            tr.innerHTML = `
+              <td>${nameHtml}</td>
+              <td data-i18n="cat_${p.category.toLowerCase().replace(/ /g, '_')}">${p.category}</td>
+              <td>${p.price}</td>
+              <td><input type="number" class="stock-input" data-id="${p.id}" value="${p.stock}" min="0"></td>
+            `;
+            tbody.appendChild(tr);
+          });
+          
+          updateLowStockBanner(lowStockCount);
+      }
+
+      function updateLowStockBanner(count) {
+          const banner = document.getElementById('low-stock-banner');
+          const statVal = document.getElementById('stat-low-stock-val');
+          
+          // Count total low stock independent of search filter
+          let trueLowStockCount = products.filter(p => p.stock < lowStockThreshold).length;
+          
+          if (trueLowStockCount > 0) {
+              banner.style.display = 'block';
+              document.getElementById('low-stock-count').textContent = trueLowStockCount;
+              statVal.textContent = trueLowStockCount;
+          } else {
+              banner.style.display = 'none';
+              statVal.textContent = '0';
+          }
+      }
+
+      document.getElementById('inventory-search').addEventListener('input', renderTable);
+
+      tbody.addEventListener('change', (e) => {
+          if (e.target.classList.contains('stock-input')) {
+              const id = e.target.getAttribute('data-id');
+              const newStock = parseInt(e.target.value, 10);
+              const prod = products.find(p => p.id === id);
+              if (prod) {
+                  prod.stock = newStock;
+                  renderTable();
+              }
+          }
       });
+
+      renderTable();
     });
-  </script>
+</script>
+<script src="assets/js/i18n.js"></script>
 </body>
 </html>
