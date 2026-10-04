@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domicile | Meubles Oran</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind Play CDN (as requested for utility classes if needed) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">
+          <!-- SVG Home Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </div>
+        <div class="brand-wordmark">Domicile</div>
+      </a>
+
+      <nav id="nav-menu" class="nav-menu">
+        <a href="index.html" class="nav-link">Accueil</a>
+        <a href="collections.html" class="nav-link">Collections</a>
+        <a href="showroom.html" class="nav-link">Showroom</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <div class="lang-switcher">
+          <button class="active">FR</button>
+          <button>AR</button>
+          <button>EN</button>
+        </div>
+        <button id="menu-toggle" class="mobile-menu-toggle">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">L'élégance à portée de main</h1>
+      <p class="hero-subtitle">Découvrez notre collection de meubles chics et contemporains pour sublimer votre intérieur à Oran.</p>
+      <a href="collections.html" class="btn">Voir la collection</a>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="container" style="padding-block: var(--spacing-16);">
+    <h2 class="text-center" style="margin-bottom: var(--spacing-8);">Nos Nouveautés</h2>
+    
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">Tout</button>
+      <button class="filter-btn" data-filter="salon">Salon</button>
+      <button class="filter-btn" data-filter="chambre">Chambre</button>
+      <button class="filter-btn" data-filter="salle-a-manger">Salle à manger</button>
+    </div>
+
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <a href="product.html" class="product-card" data-category="salon">
+        <div class="product-image">[Image Salon 1]</div>
+        <div class="product-info">
+          <div class="product-category">Salon</div>
+          <h3 class="product-title">Canapé Modulable 'Sahara'</h3>
+          <p class="product-desc">Un canapé spacieux et confortable avec revêtement anti-tâches.</p>
+          <div class="product-price">Sur devis</div>
+        </div>
+      </a>
+      
+      <!-- Product 2 -->
+      <a href="product.html" class="product-card" data-category="chambre">
+        <div class="product-image">[Image Chambre 1]</div>
+        <div class="product-info">
+          <div class="product-category">Chambre</div>
+          <h3 class="product-title">Lit King Size 'Atlas'</h3>
+          <p class="product-desc">Tête de lit en velours et sommier robuste avec rangement intégré.</p>
+          <div class="product-price">Sur devis</div>
+        </div>
+      </a>
+
+      <!-- Product 3 -->
+      <a href="product.html" class="product-card" data-category="salle-a-manger">
+        <div class="product-image">[Image Salle à Manger 1]</div>
+        <div class="product-info">
+          <div class="product-category">Salle à manger</div>
+          <h3 class="product-title">Table à Manger 'Oran'</h3>
+          <p class="product-desc">Table en noyer massif pour 8 personnes avec chaises assorties.</p>
+          <div class="product-price">Sur devis</div>
+        </div>
+      </a>
+
+      <!-- Product 4 -->
+      <a href="product.html" class="product-card" data-category="salon">
+        <div class="product-image">[Image Salon 2]</div>
+        <div class="product-info">
+          <div class="product-category">Salon</div>
+          <h3 class="product-title">Fauteuil d'Accent 'Zian'</h3>
+          <p class="product-desc">Fauteuil contemporain avec pieds en métal noir.</p>
+          <div class="product-price">Sur devis</div>
+        </div>
+      </a>
+
+      <!-- Product 5 -->
+      <a href="product.html" class="product-card" data-category="chambre">
+        <div class="product-image">[Image Chambre 2]</div>
+        <div class="product-info">
+          <div class="product-category">Chambre</div>
+          <h3 class="product-title">Commode 'Nocturne'</h3>
+          <p class="product-desc">Commode à 6 tiroirs avec finition mate élégante.</p>
+          <div class="product-price">Sur devis</div>
+        </div>
+      </a>
+
+      <!-- Product 6 -->
+      <a href="product.html" class="product-card" data-category="salle-a-manger">
+        <div class="product-image">[Image Salle à Manger 2]</div>
+        <div class="product-info">
+          <div class="product-category">Salle à manger</div>
+          <h3 class="product-title">Buffet 'Méditerranée'</h3>
+          <p class="product-desc">Buffet de rangement spacieux avec portes coulissantes.</p>
+          <div class="product-price">Sur devis</div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="text-center">
+      <a href="collections.html" class="btn btn-secondary">Voir toutes les collections</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="brand" style="margin-bottom: var(--spacing-4);">
+          <div class="brand-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          </div>
+          <div class="brand-wordmark">Domicile</div>
+        </div>
+        <p style="color: #bbb; font-size: 0.875rem;">Le mobilier chic et moderne pour sublimer votre intérieur à Oran.</p>
+      </div>
+      
+      <div>
+        <h4 class="footer-title">Contact</h4>
+        <!-- [PLACEHOLDER] -->
+        <p style="color: #bbb; font-size: 0.875rem; margin-bottom: 0.5rem;">📞 +213 555 00 00 00</p>
+        <!-- [PLACEHOLDER] -->
+        <p style="color: #bbb; font-size: 0.875rem; margin-bottom: 0.5rem;">📍 123 Rue de la Liberté, Oran</p>
+        <!-- [PLACEHOLDER] -->
+        <p style="color: #bbb; font-size: 0.875rem;">🕒 Lun-Sam: 09h00 - 19h00</p>
+      </div>
+      
+      <div>
+        <h4 class="footer-title">Liens Utiles</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; color: #bbb; font-size: 0.875rem;">
+          <li><a href="about.html">À propos de nous</a></li>
+          <li><a href="services.html">Nos services</a></li>
+          <li><a href="contact.html">Nous contacter</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/213555000000?text=Bonjour,%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20vos%20meubles." target="_blank" rel="noopener noreferrer" class="fab-whatsapp" aria-label="Contact us on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+  <!-- Mobile Bottom Action Bar -->
+  <div class="mobile-bottom-bar">
+    <div class="mobile-bottom-bar-inner">
+      <a href="tel:+213555000000" class="mobile-action">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        Appeler
+      </a>
+      <a href="https://wa.me/213555000000" class="mobile-action" style="color: #25D366;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="mobile-action">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>
+        Itinéraire
+      </a>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
