@@ -1,0 +1,18 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "collections": "Collections",
+    "inspiration": "Inspiration",
+    "showroom": "Showroom",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "title": "Welcome to Domicile",
+    "cta": "View Collections"
+  },
+  "Contact": {
+    "whatsapp": "Contact us on WhatsApp"
+  }
+}
