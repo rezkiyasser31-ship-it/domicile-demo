@@ -58,4 +58,29 @@ test.describe('Baseline Smoke Tests', () => {
     });
     await page.click('#export-csv-btn');
   });
+
+  test('i18n full audit check: FR/EN language toggle works completely on representative pages', async ({ page }) => {
+    // Check index.html
+    await page.goto('/index.html');
+    await expect(page.locator('.hero-title')).toHaveText(/L'élégance|L.élégance/i);
+    await page.click('button:has-text("EN")');
+    await expect(page.locator('.hero-title')).toHaveText(/Elegance/i);
+    
+    // Check admin.html
+    await page.goto('/admin.html');
+    await page.waitForTimeout(500); // wait for dynamic updates
+    await page.click('button:has-text("FR")');
+    await expect(page.locator('h2').first()).toHaveText(/Tableau/i);
+    await page.click('button:has-text("EN")');
+    await expect(page.locator('h2').first()).toHaveText(/Dashboard/i);
+
+    // Check product.html
+    await page.goto('/product.html?id=p1');
+    await page.waitForTimeout(500);
+    await page.click('button:has-text("FR")');
+    await expect(page.locator('h3:has-text("Détails")')).toBeVisible();
+    await page.click('button:has-text("EN")');
+    await expect(page.locator('h3:has-text("Details")')).toBeVisible();
+  });
+
 });
