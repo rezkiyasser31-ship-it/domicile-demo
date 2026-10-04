@@ -929,6 +929,9 @@ const dictionary = {
   "val_240": {"fr":"240","en":"240"},
   "val_85": {"fr":"85","en":"85"},
   "val_95": {"fr":"95","en":"95"}
+,
+  "price_45k": {"fr": "45 000 DA", "en": "45,000 DA"},
+  "desc_p6": {"fr": "Table basse en bois massif et verre trempé.", "en": "Solid wood and tempered glass coffee table."}
 };
 
 
@@ -1034,7 +1037,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
+        
+        document.querySelectorAll('[data-i18n-content]').forEach(el => {
+            const key = el.getAttribute('data-i18n-content');
+            if (dictionary[key] && dictionary[key][lang]) {
+                el.setAttribute('content', dictionary[key][lang]);
+            }
+        });
+        
+        const dynTitle = document.documentElement.getAttribute('data-dynamic-title');
+        if (dynTitle && dictionary[dynTitle] && dictionary[dynTitle][lang]) {
+            document.title = dictionary[dynTitle][lang] + (lang === 'en' ? " | Domicile" : " | Domicile");
+        }
+        
         document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+
             const key = el.getAttribute('data-i18n-aria');
             if (dictionary[key] && dictionary[key][lang]) {
                 el.setAttribute('aria-label', dictionary[key][lang]);
@@ -1043,6 +1060,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setLanguage(savedLang);
+    window.setLanguage = setLanguage;
+    document.addEventListener('retranslate', () => setLanguage(localStorage.getItem('site_lang') || 'fr'));
 
     // Delegate click for language switcher
     document.addEventListener('click', (e) => {

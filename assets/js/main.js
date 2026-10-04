@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Update breadcrumb
       if (breadcrumbCurrent && catFilter) {
           const selectedOption = catFilter.options[catFilter.selectedIndex];
-          breadcrumbCurrent.textContent = isFavView ? "Mes Favoris" : selectedOption.textContent;
+          breadcrumbCurrent.setAttribute('data-i18n', isFavView ? 'nav_favorites' : selectedOption.getAttribute('data-i18n') || 'filter_all_cats');
       }
     };
 
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (urlParams.get('favorites') === '1') {
         const h1 = document.querySelector('h1');
-        if (h1) h1.textContent = "Mes Favoris";
+        if (h1) h1.setAttribute('data-i18n', 'nav_favorites');
     }
     
     filterAndSort();
@@ -282,16 +282,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Update title and desc
         const titleEl = document.querySelector('.product-title');
-        if (titleEl) titleEl.textContent = p.title;
-        document.title = p.title + " | Domicile";
+        if (titleEl) titleEl.setAttribute('data-i18n', p.title_key);
+        document.title = ""; document.documentElement.setAttribute('data-dynamic-title', p.title_key);
         
         const priceEl = document.querySelector('.product-price');
-        if (priceEl) priceEl.textContent = p.price;
+        if (priceEl) priceEl.setAttribute('data-i18n', p.price_key);
         
         // description is usually next sibling of price or just a p tag in the container
         const descEl = document.querySelector('h2.product-title').nextElementSibling.nextElementSibling;
         if (descEl && descEl.tagName.toLowerCase() === 'p') {
-            descEl.textContent = p.desc;
+            descEl.setAttribute('data-i18n', p.desc_key);
         }
 
         // Update image
@@ -305,22 +305,22 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update WhatsApp
         const waBtn = document.querySelector('a.btn[href*="wa.me"]');
         if (waBtn) {
-            const msg = encodeURIComponent("Bonjour, je suis intéressé(e) par le " + p.title + ".");
+            const msg = encodeURIComponent("Bonjour, je suis intéressé(e) par le produit.");
             waBtn.href = "https://wa.me/213555000000?text=" + msg;
         }
 
         // Update breadcrumb
         const bcSpans = document.querySelectorAll('.breadcrumbs span');
         if (bcSpans.length > 0) {
-            bcSpans[bcSpans.length - 1].textContent = p.title;
+            bcSpans[bcSpans.length - 1].setAttribute('data-i18n', p.title_key);
         }
         
         // Update dimensions table
         const tds = document.querySelectorAll('.dimensions-table td');
         if (tds.length === 3) {
-            tds[0].textContent = p.dims.w;
-            tds[1].textContent = p.dims.h;
-            tds[2].textContent = p.dims.d;
+            tds[0].setAttribute('data-dynamic-val', p.dims.w); tds[0].textContent = p.dims.w;
+            tds[1].setAttribute('data-dynamic-val', p.dims.h); tds[1].textContent = p.dims.h;
+            tds[2].setAttribute('data-dynamic-val', p.dims.d); tds[2].textContent = p.dims.d;
         }
     }
 });
