@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html dir="ltr" lang="fr">
 <head>
@@ -56,7 +56,6 @@
 <div style="display: flex; gap: var(--spacing-8); flex-wrap: wrap;">
 <div style="flex: 1; min-width: 300px;">
 <img alt="Détail du produit" id="main-product-img" src="assets/img/salon-1.jpg" style="width: 100%; border-radius: 8px;"/>
-
 <div class="thumbnail-gallery" style="display: flex; gap: 10px; margin-top: 15px;">
 <img alt="Vue de face" onclick="document.getElementById('main-product-img').src=this.src; this.parentNode.querySelectorAll('img').forEach(i=&gt;i.style.border='2px solid transparent'); this.style.border='2px solid #000';" src="assets/img/salon-1.jpg" style="width: 80px; height: 80px; object-fit: cover; cursor: pointer; border: 2px solid #000;"/>
 <img alt="Vue de détail" onclick="document.getElementById('main-product-img').src=this.src; this.parentNode.querySelectorAll('img').forEach(i=&gt;i.style.border='2px solid transparent'); this.style.border='2px solid #000';" src="assets/img/salon-2.jpg" style="width: 80px; height: 80px; object-fit: cover; cursor: pointer; border: 2px solid transparent;"/>
@@ -67,7 +66,6 @@
 <p class="product-price" style="font-size: 1.5rem; margin-bottom: var(--spacing-4);">120 000 DA <!-- Placeholder DA price --></p>
 <p>Un canapé spacieux et confortable avec revêtement anti-tâches, parfait pour votre salon. Structure en bois massif, assises en mousse haute résilience.</p>
 <a class="btn" href="https://wa.me/213555000000?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20le%20Canap%C3%A9%20Modulable%20%27Sahara%27." style="margin-top: var(--spacing-4);">Demander un devis via WhatsApp</a>
-
 <div style="margin-top: 2rem;">
 <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 1rem;">Dimensions (cm)</h3>
 <!-- Placeholder dimensions pending final product specs -->
@@ -84,12 +82,12 @@
 <section class="container related-products" style="margin-top: 4rem; margin-bottom: 4rem;">
 <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 2rem;">Produits similaires</h2>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-<a href="product.html" style="display: block; text-decoration: none; color: inherit; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden; padding: 1rem;">
+<a href="product.html?id=p2" style="display: block; text-decoration: none; color: inherit; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden; padding: 1rem;">
 <img src="assets/img/chambre-1.jpg" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 0.25rem;"/>
 <h3 style="margin-top: 1rem; font-weight: bold;">Lit King Size 'Atlas'</h3>
 <p style="color: #6b7280; font-size: 0.875rem; margin-top: 0.5rem;">220 000 DA</p>
 </a>
-<a href="product.html" style="display: block; text-decoration: none; color: inherit; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden; padding: 1rem;">
+<a href="product.html?id=p3" style="display: block; text-decoration: none; color: inherit; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden; padding: 1rem;">
 <img src="assets/img/salle-a-manger-1.jpg" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 0.25rem;"/>
 <h3 style="margin-top: 1rem; font-weight: bold;">Table À Manger 'Oran'</h3>
 <p style="color: #6b7280; font-size: 0.875rem; margin-top: 0.5rem;">150 000 DA</p>

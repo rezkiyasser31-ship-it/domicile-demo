@@ -229,3 +229,107 @@ document.addEventListener('DOMContentLoaded', () => {
     filterAndSort();
   }
 });
+
+// ---- Product Page Dynamic Data ----
+document.addEventListener('DOMContentLoaded', () => {
+    const catalog = {
+        'p1': {
+            title: "Canapé Modulable 'Sahara'",
+            price: "120 000 DA",
+            desc: "Un canapé spacieux et confortable avec revêtement anti-tâches, parfait pour votre salon. Structure en bois massif, assises en mousse haute résilience.",
+            img: "assets/img/salon-1.jpg",
+            cat: "Salon",
+            dims: { w: 240, h: 85, d: 95 }
+        },
+        'p2': {
+            title: "Lit King Size 'Atlas'",
+            price: "220 000 DA",
+            desc: "Tête de lit en velours et sommier robuste avec rangement intégré.",
+            img: "assets/img/chambre-1.jpg",
+            cat: "Chambre",
+            dims: { w: 200, h: 120, d: 210 }
+        },
+        'p3': {
+            title: "Table À Manger 'Oran'",
+            price: "150 000 DA",
+            desc: "Table en noyer massif pour 8 personnes avec chaises assorties.",
+            img: "assets/img/salle-a-manger-1.jpg",
+            cat: "Salle à manger",
+            dims: { w: 220, h: 75, d: 100 }
+        },
+        'p4': {
+            title: "Fauteuil d'Accent 'Zian'",
+            price: "35 000 DA",
+            desc: "Fauteuil contemporain avec pieds en métal noir.",
+            img: "assets/img/salon-2.jpg",
+            cat: "Salon",
+            dims: { w: 80, h: 90, d: 85 }
+        },
+        'p5': {
+            title: "Commode 'Nocturne'",
+            price: "85 000 DA",
+            desc: "Commode à 6 tiroirs avec finition mate élégante.",
+            img: "assets/img/chambre-2.jpg",
+            cat: "Chambre",
+            dims: { w: 120, h: 90, d: 45 }
+        },
+        'p6': {
+            title: "Table Basse 'Touareg'",
+            price: "45 000 DA",
+            desc: "Table basse en bois massif et verre trempé.",
+            img: "assets/img/salon-1.jpg", // fallback image
+            cat: "Salon",
+            dims: { w: 100, h: 45, d: 60 }
+        }
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const pid = urlParams.get('id');
+    
+    if (pid && catalog[pid] && window.location.pathname.includes('product.html')) {
+        const p = catalog[pid];
+        
+        // Update title and desc
+        const titleEl = document.querySelector('.product-title');
+        if (titleEl) titleEl.textContent = p.title;
+        document.title = p.title + " | Domicile";
+        
+        const priceEl = document.querySelector('.product-price');
+        if (priceEl) priceEl.textContent = p.price;
+        
+        // description is usually next sibling of price or just a p tag in the container
+        const descEl = document.querySelector('h2.product-title').nextElementSibling.nextElementSibling;
+        if (descEl && descEl.tagName.toLowerCase() === 'p') {
+            descEl.textContent = p.desc;
+        }
+
+        // Update image
+        const imgEl = document.getElementById('main-product-img');
+        if (imgEl) imgEl.src = p.img;
+        
+        // Update gallery (just reuse the same img since we don't have multiple real ones)
+        const thumbs = document.querySelectorAll('.thumbnail-gallery img');
+        if (thumbs.length > 0) thumbs[0].src = p.img;
+        
+        // Update WhatsApp
+        const waBtn = document.querySelector('a.btn[href*="wa.me"]');
+        if (waBtn) {
+            const msg = encodeURIComponent("Bonjour, je suis intéressé(e) par le " + p.title + ".");
+            waBtn.href = "https://wa.me/213555000000?text=" + msg;
+        }
+
+        // Update breadcrumb
+        const bcSpans = document.querySelectorAll('.breadcrumbs span');
+        if (bcSpans.length > 0) {
+            bcSpans[bcSpans.length - 1].textContent = p.title;
+        }
+        
+        // Update dimensions table
+        const tds = document.querySelectorAll('.dimensions-table td');
+        if (tds.length === 3) {
+            tds[0].textContent = p.dims.w;
+            tds[1].textContent = p.dims.h;
+            tds[2].textContent = p.dims.d;
+        }
+    }
+});
