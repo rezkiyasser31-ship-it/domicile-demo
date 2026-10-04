@@ -77,4 +77,49 @@ test.describe('Baseline Smoke Tests', () => {
     await page.click("button:has-text('EN')");
     await expect(page.locator("h1[data-i18n='product_details']")).toHaveText(/Details/i);
   });
+
+
+  test('applying a filter+sort combination updates the URL and the displayed products correctly', async ({ page }) => {
+    await page.goto('/collections.html');
+    
+    // Total products initially
+    const initialCount = await page.locator('.product-card:visible').count();
+    expect(initialCount).toBeGreaterThan(0);
+
+    // Apply category filter
+    await page.selectOption('#category-filter', 'salon');
+    // Apply stock filter
+    await page.selectOption('#stock-filter', 'in');
+    // Apply sort
+    await page.selectOption('#price-sort', 'low');
+
+    await page.waitForTimeout(500); // give JS a moment to replaceState and re-render
+
+    // Check URL
+    const url = new URL(page.url());
+    expect(url.searchParams.get('cat')).toBe('salon');
+    expect(url.searchParams.get('stock')).toBe('in');
+    expect(url.searchParams.get('sort')).toBe('low');
+
+    // Check filtered count
+    const filteredCount = await page.locator('.product-card:visible').count();
+    expect(filteredCount).toBeLessThan(initialCount);
+    expect(filteredCount).toBeGreaterThan(0);
+  });
+
+  test('WhatsApp link/button contains the expected product name and price', async ({ page }) => {
+    await page.goto('/product.html?id=p1');
+    await page.waitForTimeout(500);
+    
+    const waLink = page.locator('a.btn[href*="wa.me"]');
+    await expect(waLink).toBeVisible();
+    
+    const href = await waLink.getAttribute('href');
+    // p1 is "Canap� Modulable 'Sahara'" and price is 120 000 DA
+    // The decoded string should contain "Sahara" and "120"
+    const decoded = decodeURIComponent(href);
+    expect(decoded).toContain('Sahara');
+    expect(decoded).toContain('120');
+  });
+
 });

@@ -76,27 +76,32 @@
 <div class="container" id="filters-container" style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; justify-content: center; align-items: center;">
 <input data-i18n-placeholder="admin_inv_search_placeholder" id="search-input" placeholder="Rechercher un produit..." style="border: 1px solid #ccc; padding: 0.5rem; border-radius: 0.25rem;" type="text"/>
 <select id="category-filter" style="border: 1px solid #ccc; padding: 0.5rem; border-radius: 0.25rem;">
-<option data-i18n="filter_all_cats" value="all">Toutes catégories</option>
+<option data-i18n="filter_all_cats" value="all">Toutes catAcgories</option>
 <option data-i18n="cat_salon" value="salon">Salon</option>
 <option data-i18n="cat_chambre" value="chambre">Chambre</option>
-<option data-i18n="cat_salle_à_manger" value="salle-a-manger">Salle à manger</option>
+<option data-i18n="cat_salle_A_manger" value="salle-a-manger">Salle A manger</option>
 </select>
 <select id="material-filter" style="border: 1px solid #ccc; padding: 0.5rem; border-radius: 0.25rem;">
-<option value="all" data-i18n="filter_all_mats">Tous matériaux</option>
+<option value="all" data-i18n="filter_all_mats">Tous matAcriaux</option>
 <option value="bois" data-i18n="mat_bois">Bois</option>
 <option value="velours" data-i18n="mat_velours">Velours</option>
-<option value="metal" data-i18n="mat_metal">Métal</option>
+<option value="metal" data-i18n="mat_metal">MActal</option>
 <option value="tissu" data-i18n="mat_tissu">Tissu</option>
 </select>
-<select id="price-sort" style="border: 1px solid #ccc; padding: 0.5rem; border-radius: 0.25rem;">
+<select id="stock-filter" style="border: 1px solid #ccc; padding: 0.5rem; border-radius: 0.25rem; min-width: 44px; min-height: 44px;">
+<option value="all" data-i18n="stock_all">Tous</option>
+<option value="in" data-i18n="stock_in">En stock</option>
+</select>
+<select id="price-sort" style="border: 1px solid #ccc; padding: 0.5rem; border-radius: 0.25rem; min-width: 44px; min-height: 44px;">
 <option value="none" data-i18n="sort_price">Trier par prix</option>
 <option value="low" data-i18n="sort_low">Prix croissant</option>
-<option value="high" data-i18n="sort_high">Prix décroissant</option>
+<option value="high" data-i18n="sort_high">Prix dAccroissant</option>
+<option value="name-az" data-i18n="sort_name_az">Nom A-Z</option>
 </select>
 </div>
 <div class="product-grid">
 <!-- Product 1 -->
-<a class="product-card" data-category="salon" data-id="p1" data-material="tissu" data-price="120000" href="product.html?id=p1" style="; position: relative;"><button class="wishlist-btn" data-id="p1" style="position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 20px; z-index: 10;"><svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></button>
+<a class="product-card" data-category="salon" data-id="p1" data-stock="3" data-title="Canap� Modulable Sahara" data-material="tissu" data-price="120000" href="product.html?id=p1" style="; position: relative;"><button class="wishlist-btn" data-id="p1" style="position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 20px; z-index: 10;"><svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></button>
 <div class="product-image"><span data-i18n="img_alt_salon">Un salon élégant</span><img alt="Meubles de salon" src="assets/img/salon-1.jpg"/></div>
 <div class="product-info">
 <div class="product-category" data-i18n="cat_salon">Salon</div>
@@ -106,7 +111,7 @@
 </div>
 </a>
 <!-- Product 2 -->
-<a class="product-card" data-category="chambre" data-id="p2" data-material="velours" data-price="220000" href="product.html?id=p2" style="; position: relative;"><button class="wishlist-btn" data-id="p2" style="position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 20px; z-index: 10;"><svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></button>
+<a class="product-card" data-category="chambre" data-id="p2" data-stock="2" data-title="Lit King Size Atlas" data-material="velours" data-price="220000" href="product.html?id=p2" style="; position: relative;"><button class="wishlist-btn" data-id="p2" style="position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 20px; z-index: 10;"><svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></button>
 <div class="product-image"><span data-i18n="img_alt_chambre">Une chambre apaisante</span><img alt="Meubles de chambre" src="assets/img/chambre-1.jpg"/></div>
 <div class="product-info">
 <div class="product-category" data-i18n="cat_chambre">Chambre</div>
@@ -116,7 +121,7 @@
 </div>
 </a>
 <!-- Product 3 -->
-<a class="product-card" data-category="salle-a-manger" data-id="p3" data-material="bois" data-price="150000" href="product.html?id=p3" style="; position: relative;"><button class="wishlist-btn" data-id="p3" style="position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 20px; z-index: 10;"><svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></button>
+<a class="product-card" data-category="salle-a-manger" data-id="p3" data-stock="8" data-title="Table � Manger Oran" data-material="bois" data-price="150000" href="product.html?id=p3" style="; position: relative;"><button class="wishlist-btn" data-id="p3" style="position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 20px; z-index: 10;"><svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></button>
 <div class="product-image"><span data-i18n="img_alt_sam">Salle à manger conviviale</span><img alt="Meubles de salle à manger" src="assets/img/salle-a-manger-1.jpg"/></div>
 <div class="product-info">
 <div class="product-category" data-i18n="cat_salle_à_manger">Salle à manger</div>
@@ -126,7 +131,7 @@
 </div>
 </a>
 <!-- Product 4 -->
-<a class="product-card" data-category="salon" data-id="p4" data-material="metal" data-price="35000" href="product.html?id=p4" style="; position: relative;"><button class="wishlist-btn" data-id="p4" style="position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 20px; z-index: 10;"><svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></button>
+<a class="product-card" data-category="salon" data-id="p4" data-stock="12" data-title="Fauteuil d'Accent Zian" data-material="metal" data-price="35000" href="product.html?id=p4" style="; position: relative;"><button class="wishlist-btn" data-id="p4" style="position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 20px; z-index: 10;"><svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></button>
 <div class="product-image"><span data-i18n="img_alt_fauteuil">Fauteuil contemporain</span><img alt="Meubles de salon" src="assets/img/salon-2.jpg"/></div>
 <div class="product-info">
 <div class="product-category" data-i18n="cat_salon">Salon</div>
@@ -136,7 +141,7 @@
 </div>
 </a>
 <!-- Product 5 -->
-<a class="product-card" data-category="chambre" data-id="p5" data-material="bois" data-price="85000" href="product.html?id=p5" style="; position: relative;"><button class="wishlist-btn" data-id="p5" style="position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 20px; z-index: 10;"><svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></button>
+<a class="product-card" data-category="chambre" data-id="p5" data-stock="0" data-title="Commode Nocturne" data-material="bois" data-price="85000" href="product.html?id=p5" style="; position: relative;"><button class="wishlist-btn" data-id="p5" style="position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 20px; z-index: 10;"><svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></button>
 <div class="product-image"><span data-i18n="img_alt_commode">Commode moderne</span><img alt="Meubles de chambre" src="assets/img/chambre-2.jpg"/></div>
 <div class="product-info">
 <div class="product-category" data-i18n="cat_chambre">Chambre</div>
@@ -146,7 +151,7 @@
 </div>
 </a>
 <!-- Product 6 -->
-<a class="product-card" data-category="salle-a-manger" data-id="p6" data-material="bois" data-price="45000" href="product.html?id=p6" style="; position: relative;"><button class="wishlist-btn" data-id="p6" style="position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 20px; z-index: 10;"><svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></button>
+<a class="product-card" data-category="salle-a-manger" data-id="p6" data-stock="7" data-title="Buffet M�diterran�e" data-material="bois" data-price="45000" href="product.html?id=p6" style="; position: relative;"><button class="wishlist-btn" data-id="p6" style="position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 20px; z-index: 10;"><svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></button>
 <div class="product-image"><span data-i18n="img_alt_buffet">Buffet spacieux</span><img alt="Meubles de salle à manger" src="assets/img/salle-a-manger-2.jpg"/></div>
 <div class="product-info">
 <div class="product-category" data-i18n="cat_salle_à_manger">Salle à manger</div>
@@ -157,6 +162,7 @@
 </a>
 </div>
 </div>
+<div id="empty-state" style="display: none; text-align: center; padding: 4rem; color: #666; font-size: 1.25rem;" data-i18n="empty_state_msg">Aucun produit ne correspond � vos filtres.</div>
 </section>
 <!-- Footer -->
 <footer class="site-footer">

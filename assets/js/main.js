@@ -155,13 +155,26 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let cards = Array.from(grid.querySelectorAll('.product-card'));
     
-    const filterAndSort = () => {
+        const stockFilter = document.getElementById('stock-filter');
+    const emptyState = document.getElementById('empty-state');
+
+    const filterAndSort = (pushState = true) => {
       const q = searchInput ? searchInput.value.toLowerCase() : '';
       const cat = catFilter ? catFilter.value : 'all';
       const mat = matFilter ? matFilter.value : 'all';
+      const stock = stockFilter ? stockFilter.value : 'all';
       const sort = priceSort ? priceSort.value : 'none';
       
-      const isFavView = new URLSearchParams(window.location.search).get('favorites') === '1';
+      const params = new URLSearchParams(window.location.search);
+      const isFavView = params.get('favorites') === '1';
+
+      if (pushState && !isFavView) {
+        const newUrl = new URL(window.location);
+        if (cat !== 'all') newUrl.searchParams.set('cat', cat); else newUrl.searchParams.delete('cat');
+        if (stock !== 'all') newUrl.searchParams.set('stock', stock); else newUrl.searchParams.delete('stock');
+        if (sort !== 'none') newUrl.searchParams.set('sort', sort); else newUrl.searchParams.delete('sort');
+        window.history.replaceState({}, '', newUrl);
+      }
 
       let visibleCards = [];
 
@@ -170,11 +183,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = titleEl ? titleEl.textContent.toLowerCase() : '';
         const category = card.dataset.category || 'all';
         const material = card.dataset.material || 'all';
+        const itemStock = parseInt(card.dataset.stock || '0');
         const id = card.dataset.id;
         
         let match = title.includes(q);
         if (cat !== 'all' && category !== cat) match = false;
         if (mat !== 'all' && material !== mat) match = false;
+        if (stock === 'in' && itemStock <= 0) match = false;
         if (isFavView && !favorites.includes(id)) match = false;
         
         if (match) {
@@ -187,6 +202,11 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (sort !== 'none') {
         visibleCards.sort((a, b) => {
+          if (sort === 'name-az') {
+             const titleA = a.querySelector('.product-title') ? a.querySelector('.product-title').textContent : '';
+             const titleB = b.querySelector('.product-title') ? b.querySelector('.product-title').textContent : '';
+             return titleA.localeCompare(titleB);
+          }
           const pa = parseInt(a.dataset.price || '0');
           const pb = parseInt(b.dataset.price || '0');
           return sort === 'low' ? pa - pb : pb - pa;
@@ -194,6 +214,10 @@ document.addEventListener('DOMContentLoaded', () => {
         visibleCards.forEach(c => grid.appendChild(c));
       }
       
+      if (emptyState) {
+        emptyState.style.display = visibleCards.length === 0 ? 'block' : 'none';
+      }
+
       // Update breadcrumb
       if (breadcrumbCurrent && catFilter) {
           const selectedOption = catFilter.options[catFilter.selectedIndex];
@@ -201,15 +225,25 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    if (searchInput) searchInput.addEventListener('input', filterAndSort);
-    if (catFilter) catFilter.addEventListener('change', filterAndSort);
-    if (matFilter) matFilter.addEventListener('change', filterAndSort);
-    if (priceSort) priceSort.addEventListener('change', filterAndSort);
+    if (searchInput) searchInput.addEventListener('input', () => filterAndSort());
+    if (catFilter) catFilter.addEventListener('change', () => filterAndSort());
+    if (matFilter) matFilter.addEventListener('change', () => filterAndSort());
+    if (stockFilter) stockFilter.addEventListener('change', () => filterAndSort());
+    if (priceSort) priceSort.addEventListener('change', () => filterAndSort());
 
     // Initialize from URL params
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('category') && catFilter) {
         catFilter.value = urlParams.get('category');
+    }
+    if (urlParams.get('cat') && catFilter) {
+        catFilter.value = urlParams.get('cat');
+    }
+    if (urlParams.get('stock') && stockFilter) {
+        stockFilter.value = urlParams.get('stock');
+    }
+    if (urlParams.get('sort') && priceSort) {
+        priceSort.value = urlParams.get('sort');
     }
     
     if (urlParams.get('favorites') === '1') {
@@ -217,6 +251,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (h1) h1.setAttribute('data-i18n', 'nav_favorites');
     }
     
+    window.addEventListener('popstate', () => {
+        const p = new URLSearchParams(window.location.search);
+        if (catFilter) catFilter.value = p.get('cat') || 'all';
+        if (stockFilter) stockFilter.value = p.get('stock') || 'all';
+        if (priceSort) priceSort.value = p.get('sort') || 'none';
+        filterAndSort(false);
+    });
+
     filterAndSort();
   }
 });
@@ -230,48 +272,54 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "Un canapé spacieux et confortable avec revêtement anti-tâches, parfait pour votre salon. Structure en bois massif, assises en mousse haute résilience.",
             img: "assets/img/salon-1.jpg",
             cat: "Salon",
-            dims: { w: 240, h: 85, d: 95 }
-        },
+            dims: { w: 240, h: 85, d: 95 },
+            stock: 3
+        }, title_key: "str_20", desc_key: "str_30", price_key: "price_120k",
         'p2': {
             title: "Lit King Size 'Atlas'",
             price: "220 000 DA",
             desc: "Tête de lit en velours et sommier robuste avec rangement intégré.",
             img: "assets/img/chambre-1.jpg",
             cat: "Chambre",
-            dims: { w: 200, h: 120, d: 210 }
-        },
+            dims: { w: 200, h: 120, d: 210 },
+            stock: 2
+        }, title_key: "str_107", desc_key: "str_117", price_key: "price_220k",
         'p3': {
-            title: "Table À Manger 'Oran'",
+            title: "Table A Manger 'Oran'",
             price: "150 000 DA",
             desc: "Table en noyer massif pour 8 personnes avec chaises assorties.",
             img: "assets/img/salle-a-manger-1.jpg",
-            cat: "Salle à manger",
-            dims: { w: 220, h: 75, d: 100 }
-        },
+            cat: "Salle A manger",
+            dims: { w: 220, h: 75, d: 100 },
+            stock: 8
+        }, title_key: "str_57", desc_key: "str_67", price_key: "price_150k",
         'p4': {
             title: "Fauteuil d'Accent 'Zian'",
             price: "35 000 DA",
             desc: "Fauteuil contemporain avec pieds en métal noir.",
             img: "assets/img/salon-2.jpg",
             cat: "Salon",
-            dims: { w: 80, h: 90, d: 85 }
-        },
+            dims: { w: 80, h: 90, d: 85 },
+            stock: 12
+        }, title_key: "str_38", desc_key: "str_24", price_key: "price_35k",
         'p5': {
             title: "Commode 'Nocturne'",
             price: "85 000 DA",
             desc: "Commode à 6 tiroirs avec finition mate élégante.",
             img: "assets/img/chambre-2.jpg",
             cat: "Chambre",
-            dims: { w: 120, h: 90, d: 45 }
-        },
+            dims: { w: 120, h: 90, d: 45 },
+            stock: 0
+        }, title_key: "str_105", desc_key: "str_88", price_key: "price_85k",
         'p6': {
             title: "Table Basse 'Touareg'",
             price: "45 000 DA",
             desc: "Table basse en bois massif et verre trempé.",
             img: "assets/img/salon-1.jpg", // fallback image
             cat: "Salon",
-            dims: { w: 100, h: 45, d: 60 }
-        }
+            dims: { w: 100, h: 45, d: 60 },
+            stock: 7
+        }, title_key: "str_100", desc_key: "str_125", price_key: "price_95k"
     };
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -305,8 +353,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update WhatsApp
         const waBtn = document.querySelector('a.btn[href*="wa.me"]');
         if (waBtn) {
-            const msg = encodeURIComponent("Bonjour, je suis intéressé(e) par le produit.");
-            waBtn.href = "https://wa.me/213555000000?text=" + msg;
+            const updateWaLink = () => {
+                const lang = localStorage.getItem('site_lang') || 'fr';
+                const msgTemplate = (typeof dictionary !== 'undefined' && dictionary['wa_prefill_msg']) ? dictionary['wa_prefill_msg'][lang] : "Bonjour, je suis int�ress�(e) par le produit {name} ({price}).";
+                const pName = (typeof dictionary !== 'undefined' && dictionary[p.title_key]) ? dictionary[p.title_key][lang] : p.title;
+                const pPrice = (typeof dictionary !== 'undefined' && dictionary[p.price_key]) ? dictionary[p.price_key][lang] : p.price;
+                const msg = msgTemplate.replace('{name}', pName).replace('{price}', pPrice);
+                waBtn.href = "https://wa.me/213555000000?text=" + encodeURIComponent(msg);
+                waBtn.setAttribute('data-wa-dynamic', 'true');
+            };
+            updateWaLink();
+            document.addEventListener('retranslate', updateWaLink);
         }
 
         // Update breadcrumb

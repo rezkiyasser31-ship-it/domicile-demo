@@ -932,9 +932,14 @@ const dictionary = { "ar_coming_soon": { "fr": "L\'arabe sera bientôt disponibl
 ,
   "price_45k": {"fr": "45 000 DA", "en": "45,000 DA"},
   "desc_p6": {"fr": "Table basse en bois massif et verre trempé.", "en": "Solid wood and tempered glass coffee table."}
+
+,
+  "sort_name_az": {"fr": "Nom A-Z", "en": "Name A-Z"},
+  "filter_stock": {"fr": "Disponibilit�", "en": "Availability"},
+  "stock_all": {"fr": "Tous", "en": "All"},
+  "stock_in": {"fr": "En stock", "en": "In stock"},
+  "empty_state_msg": {"fr": "Aucun produit ne correspond � vos filtres.", "en": "No products match your filters."}
 };
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('site_lang') || 'fr';
 
