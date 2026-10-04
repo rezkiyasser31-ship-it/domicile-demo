@@ -33,8 +33,6 @@
     "@commitlint/config-conventional": "^21.2.3",
     "@eslint/eslintrc": "^3",
     "@playwright/test": "^1.63.0",
-    "@swc/core": "^1.16.13",
-    "@swc/core-win32-x64-msvc": "^1.16.13",
     "@tailwindcss/postcss": "^4",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^7.0.1",
