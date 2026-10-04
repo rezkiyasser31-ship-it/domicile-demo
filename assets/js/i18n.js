@@ -1,4 +1,3 @@
-
 const dictionary = {
   "str_0": {
     "fr": "Contact",
@@ -10,11 +9,11 @@ const dictionary = {
   },
   "str_2": {
     "fr": "Depuis plus de 10 ans, Domicile s'engage à offrir le meilleur du mobilier contemporain à Oran. Notre mission est de transformer chaque maison en un foyer élégant et chaleureux, avec des pièces uniques alliant confort et design.",
-    "en": "Depuis plus de 10 ans, Domicile s'engage à offrir le meilleur du mobilier contemporain à Oran. Notre mission est de transformer chaque maison en un foyer élégant et chaleureux, avec des pièces uniques alliant confort et design."
+    "en": "For over 10 years, Domicile has been committed to offering the best of contemporary furniture in Oran. Our mission is to transform every house into an elegant, welcoming home with unique pieces combining comfort and design."
   },
   "str_3": {
     "fr": "Domicile | Accueil - Meubles de qualité en Algérie",
-    "en": "Domicile | Accueil - Meubles de qualité en Algérie"
+    "en": "Domicile | Home - Quality Furniture in Algeria"
   },
   "str_4": {
     "fr": "Attention : <span id=\"low-stock-count\">0</span> produit(s) en stock critique !",
@@ -38,15 +37,15 @@ const dictionary = {
   },
   "str_9": {
     "fr": "Nos experts montent vos meubles gratuitement directement chez vous.",
-    "en": "Nos experts montent vos meubles gratuitement directement chez vous."
+    "en": "Our experts assemble your furniture for free directly at your home."
   },
   "str_10": {
     "fr": "Nous livrons partout à Oran et ses environs avec soin et ponctualité.",
-    "en": "Nous livrons partout à Oran et ses environs avec soin et ponctualité."
+    "en": "We deliver across Oran and surrounding areas with care and punctuality."
   },
   "str_11": {
     "fr": "Canapé Modulable 'Sahara' | Domicile",
-    "en": "Canapé Modulable 'Sahara' | Domicile"
+    "en": "Modular Sofa 'Sahara' | Domicile"
   },
   "str_12": {
     "fr": "Produits similaires",
@@ -54,7 +53,7 @@ const dictionary = {
   },
   "str_13": {
     "fr": "\"J'ai équipé toute ma chambre chez eux. Superbe qualité et SAV réactif sur WhatsApp. Je recommande !\"",
-    "en": "\"J'ai équipé toute ma chambre chez eux. Superbe qualité et SAV réactif sur WhatsApp. Je recommande !\""
+    "en": "\"I furnished my entire bedroom with them. Superb quality and responsive customer service on WhatsApp. Highly recommend!\""
   },
   "str_14": {
     "fr": "Top Produits Vus",
@@ -82,7 +81,7 @@ const dictionary = {
   },
   "str_20": {
     "fr": "Canapé Modulable 'Sahara'",
-    "en": "Canapé Modulable 'Sahara'"
+    "en": "Modular Sofa 'Sahara'"
   },
   "str_21": {
     "fr": "Toutes nos collections",
@@ -90,15 +89,15 @@ const dictionary = {
   },
   "str_22": {
     "fr": "Appeler",
-    "en": "Appeler"
+    "en": "Call"
   },
   "str_23": {
     "fr": "Demander un devis via WhatsApp",
-    "en": "Demander un devis via WhatsApp"
+    "en": "Request a quote via WhatsApp"
   },
   "str_24": {
     "fr": "Fauteuil contemporain avec pieds en métal noir.",
-    "en": "Fauteuil contemporain avec pieds en métal noir."
+    "en": "Contemporary armchair with black metal legs."
   },
   "str_25": {
     "fr": "Paiement à la livraisonLivraison via Yalidine - 58 wilayasGarantie 2 ansRéponse rapide sur WhatsApp",
@@ -110,7 +109,7 @@ const dictionary = {
   },
   "str_27": {
     "fr": "Paiement à la livraison disponible",
-    "en": "Paiement à la livraison disponible"
+    "en": "Cash on delivery available"
   },
   "str_28": {
     "fr": "Visitez notre Showroom",
@@ -122,15 +121,15 @@ const dictionary = {
   },
   "str_30": {
     "fr": "Un canapé spacieux et confortable avec revêtement anti-tâches.",
-    "en": "Un canapé spacieux et confortable avec revêtement anti-tâches."
+    "en": "A spacious and comfortable sofa with stain-resistant upholstery."
   },
   "str_31": {
     "fr": "WhatsApp",
     "en": "WhatsApp"
   },
   "str_32": {
-    "fr": "Comment obtenir un devis personnalisé ?+",
-    "en": "Comment obtenir un devis personnalisé ?+"
+    "fr": "Comment obtenir un devis personnalisé ?",
+    "en": "How do I get a custom quote?"
   },
   "str_33": {
     "fr": "Le mobilier chic et moderne pour sublimer votre intérieur à Oran.",
@@ -146,15 +145,15 @@ const dictionary = {
   },
   "str_36": {
     "fr": "- Sarah, Centre-ville",
-    "en": "- Sarah, Centre-ville"
+    "en": "- Sarah, Downtown"
   },
   "str_37": {
     "fr": "Une question ? N'hésitez pas à nous écrire.",
-    "en": "Une question ? N'hésitez pas à nous écrire."
+    "en": "Have a question? Feel free to contact us."
   },
   "str_38": {
     "fr": "Fauteuil d'Accent 'Zian'",
-    "en": "Fauteuil d'Accent 'Zian'"
+    "en": "Accent Chair 'Zian'"
   },
   "str_39": {
     "fr": "Nous contacter",
@@ -166,7 +165,7 @@ const dictionary = {
   },
   "str_41": {
     "fr": "Itinéraire",
-    "en": "Itinéraire"
+    "en": "Directions"
   },
   "str_42": {
     "fr": "Salons",
@@ -221,8 +220,8 @@ const dictionary = {
     "en": "Paiement à la livraison disponibleLivraison via Yalidine - 58 wilayasGarantie 2 ansRéponse rapide sur WhatsApp"
   },
   "str_55": {
-    "fr": "Quelle est votre politique de retour et d'échange ?+",
-    "en": "Quelle est votre politique de retour et d'échange ?+"
+    "fr": "Quelle est votre politique de retour et d'échange ?",
+    "en": "What is your return and exchange policy?"
   },
   "str_56": {
     "fr": "Message",
@@ -230,7 +229,7 @@ const dictionary = {
   },
   "str_57": {
     "fr": "Table à Manger 'Oran'",
-    "en": "Table à Manger 'Oran'"
+    "en": "Dining Table 'Oran'"
   },
   "str_58": {
     "fr": "- Karim, Es Sénia",
@@ -238,7 +237,7 @@ const dictionary = {
   },
   "str_59": {
     "fr": "Oui, le paiement à la livraison est disponible pour toutes vos commandes sur l'ensemble du territoire.",
-    "en": "Oui, le paiement à la livraison est disponible pour toutes vos commandes sur l'ensemble du territoire."
+    "en": "Yes, cash on delivery is available for all orders across the country."
   },
   "str_60": {
     "fr": "Voir la collection",
@@ -246,7 +245,7 @@ const dictionary = {
   },
   "str_61": {
     "fr": "À Propos | Domicile",
-    "en": "À Propos | Domicile"
+    "en": "About Us | Domicile"
   },
   "str_62": {
     "fr": "Vue d'ensemble",
@@ -258,7 +257,7 @@ const dictionary = {
   },
   "str_64": {
     "fr": "Contactez-nous directement sur WhatsApp avec les détails de votre projet pour un devis rapide.",
-    "en": "Contactez-nous directement sur WhatsApp avec les détails de votre projet pour un devis rapide."
+    "en": "Contact us directly on WhatsApp with your project details for a quick quote."
   },
   "str_65": {
     "fr": "Envoyer",
@@ -270,15 +269,15 @@ const dictionary = {
   },
   "str_67": {
     "fr": "Table en noyer massif pour 8 personnes avec chaises assorties.",
-    "en": "Table en noyer massif pour 8 personnes avec chaises assorties."
+    "en": "Solid walnut table for 8 people with matching chairs."
   },
   "str_68": {
     "fr": "Tous nos produits bénéficient d'une garantie de 2 ans contre les défauts de fabrication.",
-    "en": "Tous nos produits bénéficient d'une garantie de 2 ans contre les défauts de fabrication."
+    "en": "All our products come with a 2-year warranty against manufacturing defects."
   },
   "str_69": {
     "fr": "Nos Services | Domicile",
-    "en": "Nos Services | Domicile"
+    "en": "Our Services | Domicile"
   },
   "str_70": {
     "fr": "Salon",
@@ -286,7 +285,7 @@ const dictionary = {
   },
   "str_71": {
     "fr": "Un canapé spacieux et confortable avec revêtement anti-tâches, parfait pour votre salon. Structure en bois massif, assises en mousse haute résilience.",
-    "en": "Un canapé spacieux et confortable avec revêtement anti-tâches, parfait pour votre salon. Structure en bois massif, assises en mousse haute résilience."
+    "en": "A spacious and comfortable sofa with stain-resistant fabric, perfect for your living room. Solid wood frame, high-resilience foam seats."
   },
   "str_72": {
     "fr": "Notre Histoire",
@@ -294,15 +293,15 @@ const dictionary = {
   },
   "str_73": {
     "fr": "Collections | Domicile - Tous nos meubles",
-    "en": "Collections | Domicile - Tous nos meubles"
+    "en": "Collections | Domicile - All Our Furniture"
   },
   "str_74": {
     "fr": "Table À Manger 'Oran'",
-    "en": "Table À Manger 'Oran'"
+    "en": "Dining Table 'Oran'"
   },
   "str_75": {
     "fr": "\"Rien à dire, les finitions de la table à manger sont magnifiques. L'équipe est très professionnelle.\"",
-    "en": "\"Rien à dire, les finitions de la table à manger sont magnifiques. L'équipe est très professionnelle.\""
+    "en": "\"Nothing to say, the dining table finishes are magnificent. The team is very professional.\""
   },
   "str_76": {
     "fr": "Domicile",
@@ -313,8 +312,8 @@ const dictionary = {
     "en": "All"
   },
   "str_78": {
-    "fr": "Proposez-vous le paiement à la livraison (COD) ?+",
-    "en": "Proposez-vous le paiement à la livraison (COD) ?+"
+    "fr": "Proposez-vous le paiement à la livraison (COD) ?",
+    "en": "Do you offer cash on delivery (COD)?"
   },
   "str_79": {
     "fr": "Toutes les catégories",
@@ -326,19 +325,19 @@ const dictionary = {
   },
   "str_81": {
     "fr": "Lun-Sam: 09h00 - 19h00",
-    "en": "Lun-Sam: 09h00 - 19h00"
+    "en": "Mon-Sat: 09:00 AM - 07:00 PM"
   },
   "str_82": {
     "fr": "Un accompagnement sur-mesure pour aménager votre intérieur selon vos envies.",
-    "en": "Un accompagnement sur-mesure pour aménager votre intérieur selon vos envies."
+    "en": "Customized guidance to design your interior according to your wishes."
   },
   "str_83": {
-    "fr": "Quels sont les délais de livraison ?+",
-    "en": "Quels sont les délais de livraison ?+"
+    "fr": "Quels sont les délais de livraison ?",
+    "en": "What are the delivery times?"
   },
   "str_84": {
     "fr": "Ouvert du Lundi au Samedi de 09h00 à 19h00",
-    "en": "Ouvert du Lundi au Samedi de 09h00 à 19h00"
+    "en": "Open Monday to Saturday from 09:00 AM to 07:00 PM"
   },
   "str_85": {
     "fr": "Installation Gratuite",
@@ -354,7 +353,7 @@ const dictionary = {
   },
   "str_88": {
     "fr": "Commode à 6 tiroirs avec finition mate élégante.",
-    "en": "Commode à 6 tiroirs avec finition mate élégante."
+    "en": "6-drawer dresser with elegant matte finish."
   },
   "str_89": {
     "fr": "Nos Services",
@@ -366,7 +365,7 @@ const dictionary = {
   },
   "str_91": {
     "fr": "Notre Showroom | Domicile",
-    "en": "Notre Showroom | Domicile"
+    "en": "Our Showroom | Domicile"
   },
   "str_92": {
     "fr": "Administration | Domicile",
@@ -378,11 +377,11 @@ const dictionary = {
   },
   "str_94": {
     "fr": "\"Un service impeccable. La livraison à Oran s'est faite en un temps record via Yalidine, et le canapé est sublime.\"",
-    "en": "\"Un service impeccable. La livraison à Oran s'est faite en un temps record via Yalidine, et le canapé est sublime.\""
+    "en": "\"Impeccable service. Delivery to Oran was done in record time via Yalidine, and the sofa is sublime.\""
   },
   "str_95": {
     "fr": "Mes Favoris (0)",
-    "en": "Mes Favoris (0)"
+    "en": "My Favorites (<span id=\"wishlist-count\">0</span>)"
   },
   "str_96": {
     "fr": "+213 555 00 00 00",
@@ -394,7 +393,7 @@ const dictionary = {
   },
   "str_98": {
     "fr": "Nous livrons via Yalidine dans un délai de 2 à 5 jours ouvrables pour les 58 wilayas.",
-    "en": "Nous livrons via Yalidine dans un délai de 2 à 5 jours ouvrables pour les 58 wilayas."
+    "en": "We deliver via Yalidine within 2 to 5 business days across all 58 wilayas."
   },
   "str_99": {
     "fr": "Questions Fréquentes (FAQ)",
@@ -402,7 +401,7 @@ const dictionary = {
   },
   "str_100": {
     "fr": "Buffet 'Méditerranée'",
-    "en": "Buffet 'Méditerranée'"
+    "en": "Sideboard 'Méditerranée'"
   },
   "str_101": {
     "fr": "Dimensions (cm)",
@@ -414,7 +413,7 @@ const dictionary = {
   },
   "str_103": {
     "fr": "Voir sur Google Maps",
-    "en": "Voir sur Google Maps"
+    "en": "View on Google Maps"
   },
   "str_104": {
     "fr": "Paiement à la livraison",
@@ -422,15 +421,15 @@ const dictionary = {
   },
   "str_105": {
     "fr": "Commode 'Nocturne'",
-    "en": "Commode 'Nocturne'"
+    "en": "Dresser 'Nocturne'"
   },
   "str_106": {
     "fr": "Vous disposez de 7 jours après la réception pour demander un échange ou un retour si le produit ne correspond pas à vos attentes.",
-    "en": "Vous disposez de 7 jours après la réception pour demander un échange ou un retour si le produit ne correspond pas à vos attentes."
+    "en": "You have 7 days after delivery to request an exchange or return if the product does not meet your expectations."
   },
   "str_107": {
     "fr": "Lit King Size 'Atlas'",
-    "en": "Lit King Size 'Atlas'"
+    "en": "King Size Bed 'Atlas'"
   },
   "str_108": {
     "fr": "Mot de passe incorrect",
@@ -438,7 +437,7 @@ const dictionary = {
   },
   "str_109": {
     "fr": "\"La qualité du bois est exceptionnelle. Très satisfaite de mon achat, et le paiement à la livraison m'a beaucoup rassurée.\"",
-    "en": "\"La qualité du bois est exceptionnelle. Très satisfaite de mon achat, et le paiement à la livraison m'a beaucoup rassurée.\""
+    "en": "\"The wood quality is exceptional. Very satisfied with my purchase, and cash on delivery gave me great peace of mind.\""
   },
   "str_110": {
     "fr": "Largeur",
@@ -462,7 +461,7 @@ const dictionary = {
   },
   "str_115": {
     "fr": "Canapé 'Sahara'Lit 'Atlas'",
-    "en": "Canapé 'Sahara'Lit 'Atlas'"
+    "en": "Sofa 'Sahara'<br/>Bed 'Atlas'"
   },
   "str_116": {
     "fr": "Chambre",
@@ -470,11 +469,11 @@ const dictionary = {
   },
   "str_117": {
     "fr": "Tête de lit en velours et sommier robuste avec rangement intégré.",
-    "en": "Tête de lit en velours et sommier robuste avec rangement intégré."
+    "en": "Velvet headboard and sturdy bed base with integrated storage."
   },
   "str_118": {
-    "fr": "Quelle est la durée de la garantie ?+",
-    "en": "Quelle est la durée de la garantie ?+"
+    "fr": "Quelle est la durée de la garantie ?",
+    "en": "How long is the warranty?"
   },
   "str_119": {
     "fr": "Chambres",
@@ -502,7 +501,7 @@ const dictionary = {
   },
   "str_125": {
     "fr": "Buffet de rangement spacieux avec portes coulissantes.",
-    "en": "Buffet de rangement spacieux avec portes coulissantes."
+    "en": "Spacious storage sideboard with sliding doors."
   },
   "str_126": {
     "fr": "Découvrez notre collection de meubles chics et contemporains pour sublimer votre intérieur à Oran.",
@@ -815,8 +814,7 @@ const dictionary = {
   "admin_low_stock_msg_post": {
     "fr": " produit(s) en stock critique !",
     "en": " product(s) in critical stock!"
-  }
-  ,
+  },
   "filter_all_mats": {
     "fr": "Tous matériaux",
     "en": "All materials"
@@ -848,15 +846,57 @@ const dictionary = {
   "sort_high": {
     "fr": "Prix décroissant",
     "en": "Price: High to Low"
+  },
+  "search_placeholder": {
+    "fr": "Rechercher un produit...",
+    "en": "Search for a product..."
   }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('site_lang') || 'fr';
+
+    function showNotice(msg) {
+        let toast = document.getElementById('i18n-toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.id = 'i18n-toast';
+            toast.setAttribute('role', 'status');
+            toast.style.cssText = [
+                'position: fixed',
+                'bottom: 24px',
+                'right: 24px',
+                'background: #2D2424',
+                'color: #FAF9F6',
+                'padding: 12px 20px',
+                'border-radius: 8px',
+                'font-size: 0.875rem',
+                'font-family: inherit',
+                'box-shadow: 0 4px 14px rgba(0,0,0,0.25)',
+                'border: 1px solid #C4A482',
+                'z-index: 10000',
+                'transition: opacity 0.3s ease, transform 0.3s ease',
+                'opacity: 0',
+                'transform: translateY(10px)',
+                'pointer-events: none'
+            ].join(';');
+            document.body.appendChild(toast);
+        }
+        toast.textContent = msg;
+        requestAnimationFrame(() => {
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateY(0)';
+        });
+        clearTimeout(toast._timeout);
+        toast._timeout = setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateY(10px)';
+        }, 2500);
+    }
     
     function setLanguage(lang) {
-        if(lang === 'ar') {
-            alert('Coming soon!');
+        if (lang === 'ar') {
+            showNotice("L'arabe sera bientôt disponible ! / Arabic coming soon");
             return;
         }
         localStorage.setItem('site_lang', lang);
@@ -866,7 +906,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Update buttons
         document.querySelectorAll('.lang-switcher button').forEach(btn => {
-            if (btn.textContent.toLowerCase() === lang) {
+            const btnLang = (btn.dataset.lang || btn.textContent).trim().toLowerCase();
+            if (btnLang === 'ar') {
+                btn.setAttribute('title', 'Bientôt disponible / Coming soon');
+            }
+            if (btnLang === lang) {
                 btn.classList.add('active');
             } else {
                 btn.classList.remove('active');
@@ -877,17 +921,28 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (dictionary[key] && dictionary[key][lang]) {
+                const translation = dictionary[key][lang];
                 if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                    el.placeholder = dictionary[key][lang];
-                } else {
+                    el.placeholder = translation;
+                } else if (el.querySelector('#wishlist-count')) {
+                    const countSpan = el.querySelector('#wishlist-count');
+                    const count = countSpan ? countSpan.textContent : '0';
+                    const prefix = lang === 'en' ? 'My Favorites' : 'Mes Favoris';
+                    el.innerHTML = `${prefix} (<span id="wishlist-count">${count}</span>)`;
+                } else if (el.querySelector('svg')) {
                     const svg = el.querySelector('svg');
-                    if(svg) {
-                         el.innerHTML = '';
-                         el.appendChild(svg);
-                         el.appendChild(document.createTextNode(' ' + dictionary[key][lang]));
-                    } else {
-                         el.textContent = dictionary[key][lang];
-                    }
+                    el.innerHTML = '';
+                    el.appendChild(svg);
+                    el.appendChild(document.createTextNode(' ' + translation));
+                } else if (el.querySelector('span')) {
+                    const span = el.querySelector('span');
+                    el.innerHTML = '';
+                    el.appendChild(document.createTextNode(translation + ' '));
+                    el.appendChild(span);
+                } else if (translation.includes('<')) {
+                    el.innerHTML = translation;
+                } else {
+                    el.textContent = translation;
                 }
             }
         });
@@ -903,10 +958,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setLanguage(savedLang);
 
-    // Delegate click for language switcher (since some are added dynamically or there are multiple)
+    // Delegate click for language switcher
     document.addEventListener('click', (e) => {
-        if (e.target.tagName === 'BUTTON' && e.target.closest('.lang-switcher')) {
-            const lang = e.target.textContent.toLowerCase();
+        const btn = e.target.closest('.lang-switcher button');
+        if (btn) {
+            const lang = (btn.dataset.lang || btn.textContent).trim().toLowerCase();
             setLanguage(lang);
         }
     });
