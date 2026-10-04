@@ -105,3 +105,127 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// ---- New Features Added ----
+document.addEventListener('DOMContentLoaded', () => {
+  // Wishlist functionality
+  let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+  const countEl = document.getElementById('wishlist-count');
+  
+  const updateWishlistUI = () => {
+    if(countEl) countEl.textContent = favorites.length;
+    document.querySelectorAll('.wishlist-btn').forEach(btn => {
+      const id = btn.dataset.id;
+      if (favorites.includes(id)) {
+        btn.textContent = '♥';
+        btn.style.color = '#dc2626';
+      } else {
+        btn.textContent = '♡';
+        btn.style.color = '#000';
+      }
+    });
+  };
+  
+  document.querySelectorAll('.wishlist-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault(); // In case it's inside an <a>
+      e.stopPropagation();
+      const id = btn.dataset.id;
+      if (favorites.includes(id)) {
+        favorites = favorites.filter(fav => fav !== id);
+      } else {
+        favorites.push(id);
+      }
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      updateWishlistUI();
+    });
+  });
+  
+  updateWishlistUI();
+
+  // FAQ Accordion
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling;
+      const isHidden = content.style.display === 'none' || content.style.display === '';
+      content.style.display = isHidden ? 'block' : 'none';
+      btn.querySelector('span').textContent = isHidden ? '-' : '+';
+    });
+  });
+
+  // Collections Filtering & Sorting & Live Search
+  const grid = document.querySelector('.product-grid');
+  if (grid) {
+    const searchInput = document.getElementById('search-input');
+    const catFilter = document.getElementById('category-filter');
+    const matFilter = document.getElementById('material-filter');
+    const priceSort = document.getElementById('price-sort');
+    const breadcrumbCurrent = document.getElementById('breadcrumb-current');
+    
+    let cards = Array.from(grid.querySelectorAll('.product-card'));
+    
+    const filterAndSort = () => {
+      const q = searchInput ? searchInput.value.toLowerCase() : '';
+      const cat = catFilter ? catFilter.value : 'all';
+      const mat = matFilter ? matFilter.value : 'all';
+      const sort = priceSort ? priceSort.value : 'none';
+      
+      const isFavView = new URLSearchParams(window.location.search).get('favorites') === '1';
+
+      let visibleCards = [];
+
+      cards.forEach(card => {
+        const titleEl = card.querySelector('.product-title') || card.querySelector('h3');
+        const title = titleEl ? titleEl.textContent.toLowerCase() : '';
+        const category = card.dataset.category || 'all';
+        const material = card.dataset.material || 'all';
+        const id = card.dataset.id;
+        
+        let match = title.includes(q);
+        if (cat !== 'all' && category !== cat) match = false;
+        if (mat !== 'all' && material !== mat) match = false;
+        if (isFavView && !favorites.includes(id)) match = false;
+        
+        if (match) {
+          card.style.display = '';
+          visibleCards.push(card);
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      if (sort !== 'none') {
+        visibleCards.sort((a, b) => {
+          const pa = parseInt(a.dataset.price || '0');
+          const pb = parseInt(b.dataset.price || '0');
+          return sort === 'low' ? pa - pb : pb - pa;
+        });
+        visibleCards.forEach(c => grid.appendChild(c));
+      }
+      
+      // Update breadcrumb
+      if (breadcrumbCurrent && catFilter) {
+          const selectedOption = catFilter.options[catFilter.selectedIndex];
+          breadcrumbCurrent.textContent = isFavView ? "Mes Favoris" : selectedOption.textContent;
+      }
+    };
+
+    if (searchInput) searchInput.addEventListener('input', filterAndSort);
+    if (catFilter) catFilter.addEventListener('change', filterAndSort);
+    if (matFilter) matFilter.addEventListener('change', filterAndSort);
+    if (priceSort) priceSort.addEventListener('change', filterAndSort);
+
+    // Initialize from URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('category') && catFilter) {
+        catFilter.value = urlParams.get('category');
+    }
+    
+    if (urlParams.get('favorites') === '1') {
+        const h1 = document.querySelector('h1');
+        if (h1) h1.textContent = "Mes Favoris";
+    }
+    
+    filterAndSort();
+  }
+});

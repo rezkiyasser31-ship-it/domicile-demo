@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+
+<html dir="ltr" lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Domicile | Admin (Demo)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Administration | Domicile</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&amp;family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="assets/css/styles.css" rel="stylesheet"/>
+<style>
     #admin-dashboard { display: none; }
     .admin-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
     .stat-card { background: var(--color-ivory, #FAF9F6); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--color-sand, #E6E2DD); text-align: center; }
@@ -18,69 +19,63 @@
     .inventory-table th { font-family: 'Fraunces', serif; background: var(--color-ivory, #FAF9F6); }
     .stock-input { width: 60px; padding: 0.25rem; border: 1px solid #ccc; border-radius: 4px; }
   </style>
-</head>
+<meta content="Espace d'administration Domicile." name="description"/></head>
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand">
-        <div class="brand-wordmark">Domicile Admin</div>
-      </a>
-    </div>
-  </header>
-
-  <main class="container" style="padding-block: 4rem; min-height: 70vh;">
-    <!-- NOTE: This is a DEMO/MOCK admin page. There is no real security or backend! -->
-    
-    <div id="login-section" style="max-width: 400px; margin: 0 auto; text-align: center; background: var(--color-ivory); padding: 2rem; border-radius: 8px; border: 1px solid var(--color-sand);">
-      <h2 style="margin-bottom: 1rem;">Connexion Admin</h2>
-      <p style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #666;">Ceci est une démo. Mot de passe : domicile2026</p>
-      <input type="password" id="admin-pwd" placeholder="Mot de passe" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px;">
-      <button id="login-btn" class="btn" style="width: 100%;">Se connecter</button>
-      <p id="login-err" style="color: red; display: none; margin-top: 1rem; font-size: 0.875rem;">Mot de passe incorrect</p>
-    </div>
-
-    <div id="admin-dashboard">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-        <h2>Tableau de bord</h2>
-        <button id="logout-btn" class="btn btn-secondary">Déconnexion</button>
-      </div>
-
-      <div class="admin-stats">
-        <div class="stat-card">
-          <h3>1,245</h3>
-          <p>Visites ce mois</p>
-        </div>
-        <div class="stat-card">
-          <h3>84</h3>
-          <p>Clics WhatsApp</p>
-        </div>
-        <div class="stat-card">
-          <h3 style="font-size: 1.25rem; line-height: 1.2; margin-top: 0.5rem;">Canapé 'Sahara'<br>Lit 'Atlas'</h3>
-          <p style="margin-top: 0.5rem;">Top Produits Vus</p>
-        </div>
-      </div>
-
-      <h3>Inventaire des Produits</h3>
-      <div style="overflow-x: auto;">
-        <table class="inventory-table">
-          <thead>
-            <tr>
-              <th>Produit</th>
-              <th>Catégorie</th>
-              <th>Prix</th>
-              <th>Stock</th>
-            </tr>
-          </thead>
-          <tbody id="inventory-body">
-            <!-- Populated by JS -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </main>
-
-  <script>
+<!-- Header -->
+<header class="site-header">
+<div class="container header-inner">
+<a class="brand" href="index.html">
+<div class="brand-wordmark">Domicile Admin</div>
+</a>
+</div>
+</header>
+<main class="container" style="padding-block: 4rem; min-height: 70vh;">
+<!-- NOTE: This is a DEMO/MOCK admin page. There is no real security or backend! -->
+<div id="login-section" style="max-width: 400px; margin: 0 auto; text-align: center; background: var(--color-ivory); padding: 2rem; border-radius: 8px; border: 1px solid var(--color-sand);">
+<h2 style="margin-bottom: 1rem;">Connexion Admin</h2>
+<p style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #666;">Ceci est une démo. Mot de passe : domicile2026</p>
+<input id="admin-pwd" placeholder="Mot de passe" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px;" type="password"/>
+<button class="btn" id="login-btn" style="width: 100%;">Se connecter</button>
+<p id="login-err" style="color: red; display: none; margin-top: 1rem; font-size: 0.875rem;">Mot de passe incorrect</p>
+</div>
+<div id="admin-dashboard">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+<h2>Tableau de bord</h2>
+<button class="btn btn-secondary" id="logout-btn">Déconnexion</button>
+</div>
+<div class="admin-stats">
+<div class="stat-card">
+<h3>1,245</h3>
+<p>Visites ce mois</p>
+</div>
+<div class="stat-card">
+<h3>84</h3>
+<p>Clics WhatsApp</p>
+</div>
+<div class="stat-card">
+<h3 style="font-size: 1.25rem; line-height: 1.2; margin-top: 0.5rem;">Canapé 'Sahara'<br/>Lit 'Atlas'</h3>
+<p style="margin-top: 0.5rem;">Top Produits Vus</p>
+</div>
+</div>
+<h3>Inventaire des Produits</h3>
+<div style="overflow-x: auto;">
+<table class="inventory-table">
+<thead>
+<tr>
+<th>Produit</th>
+<th>Catégorie</th>
+<th>Prix</th>
+<th>Stock</th>
+</tr>
+</thead>
+<tbody id="inventory-body">
+<!-- Populated by JS -->
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<script>
     document.addEventListener('DOMContentLoaded', () => {
       const loginSection = document.getElementById('login-section');
       const adminDashboard = document.getElementById('admin-dashboard');
