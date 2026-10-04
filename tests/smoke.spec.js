@@ -82,21 +82,27 @@ test.describe('Catalog & Filtering', () => {
   test('empty-state message appears when a filter combination matches zero products', async ({ page }) => {
     await page.goto('/collections.html');
     
-    // Set a combination that likely yields nothing
-    await page.selectOption('#category-filter', 'salon');
-    await page.selectOption('#material-filter', 'bois');
-    // Wait for JS to process the filter
-    await page.waitForTimeout(500);
-    
-    // Check if the empty state is visible, depending on actual inventory.
-    // Let's force an impossible filter by selecting something that doesn't exist,
-    // or just rely on the test data if salon+bois is 0. If it's not 0, it might fail.
-    // Instead of guessing, we can evaluate a script to set an impossible filter,
-    // but a safer approach is to set price-sort to something or add a search query.
     await page.fill('#search-input', 'impossiblestringthatdoesnotexist123');
     await page.waitForTimeout(500);
 
     await expect(page.locator('#empty-state')).toBeVisible();
+  });
+
+  test('realistic filter combination (salle-a-manger + velours + in-stock + price low) returns results', async ({ page }) => {
+    await page.goto('/collections.html');
+    
+    await page.selectOption('#category-filter', 'salle-a-manger');
+    await page.selectOption('#material-filter', 'velours');
+    await page.selectOption('#stock-filter', 'in');
+    await page.selectOption('#price-sort', 'low');
+    
+    await page.waitForTimeout(500);
+    
+    const visibleCards = await page.locator('.product-card:visible').count();
+    expect(visibleCards).toBeGreaterThan(0);
+    
+    // Check that empty state is hidden
+    await expect(page.locator('#empty-state')).toBeHidden();
   });
 });
 

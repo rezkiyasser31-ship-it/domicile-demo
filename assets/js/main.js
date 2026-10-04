@@ -320,7 +320,331 @@ document.addEventListener('DOMContentLoaded', () => {
             dims: { w: 100, h: 45, d: 60 },
             stock: 7
         }, title_key: "str_100", desc_key: "str_125", price_key: "price_95k"
-    };
+    ,
+        'p7': {
+            title: "Table Basse Carthage",
+            price: "38000 DA",
+            desc: "Magnifique creation pour votre Salon avec finition en bois.",
+            img: "assets/img/salon-1.jpg",
+            cat: "Salon",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 6
+        }, title_key: "str_new_7_t", desc_key: "str_new_7_d", price_key: "price_new_7",
+        'p8': {
+            title: "Meuble TV Andalousie",
+            price: "27000 DA",
+            desc: "Magnifique creation pour votre Salon avec finition en bois.",
+            img: "assets/img/salon-2.jpg",
+            cat: "Salon",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 0
+        }, title_key: "str_new_8_t", desc_key: "str_new_8_d", price_key: "price_new_8",
+        'p9': {
+            title: "Bibliotheque Byblos",
+            price: "55000 DA",
+            desc: "Magnifique creation pour votre Salon avec finition en bois.",
+            img: "assets/img/salon-1.jpg",
+            cat: "Salon",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 2
+        }, title_key: "str_new_9_t", desc_key: "str_new_9_d", price_key: "price_new_9",
+        'p10': {
+            title: "Canape Casablanca",
+            price: "79000 DA",
+            desc: "Magnifique creation pour votre Salon avec finition en velours.",
+            img: "assets/img/salon-1.jpg",
+            cat: "Salon",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 3
+        }, title_key: "str_new_10_t", desc_key: "str_new_10_d", price_key: "price_new_10",
+        'p11': {
+            title: "Fauteuil Alger",
+            price: "23000 DA",
+            desc: "Magnifique creation pour votre Salon avec finition en velours.",
+            img: "assets/img/salon-2.jpg",
+            cat: "Salon",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 0
+        }, title_key: "str_new_11_t", desc_key: "str_new_11_d", price_key: "price_new_11",
+        'p12': {
+            title: "Pouf Tanger",
+            price: "58000 DA",
+            desc: "Magnifique creation pour votre Salon avec finition en velours.",
+            img: "assets/img/salon-1.jpg",
+            cat: "Salon",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 19
+        }, title_key: "str_new_12_t", desc_key: "str_new_12_d", price_key: "price_new_12",
+        'p13': {
+            title: "Bout de Canape Fer forge",
+            price: "38000 DA",
+            desc: "Magnifique creation pour votre Salon avec finition en metal.",
+            img: "assets/img/salon-1.jpg",
+            cat: "Salon",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 7
+        }, title_key: "str_new_13_t", desc_key: "str_new_13_d", price_key: "price_new_13",
+        'p14': {
+            title: "Table d'Appoint Oran",
+            price: "52000 DA",
+            desc: "Magnifique creation pour votre Salon avec finition en metal.",
+            img: "assets/img/salon-2.jpg",
+            cat: "Salon",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 0
+        }, title_key: "str_new_14_t", desc_key: "str_new_14_d", price_key: "price_new_14",
+        'p15': {
+            title: "Etagere Constantine",
+            price: "25000 DA",
+            desc: "Magnifique creation pour votre Salon avec finition en metal.",
+            img: "assets/img/salon-1.jpg",
+            cat: "Salon",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 10
+        }, title_key: "str_new_15_t", desc_key: "str_new_15_d", price_key: "price_new_15",
+        'p16': {
+            title: "Canape d'Angle Tunis",
+            price: "97000 DA",
+            desc: "Magnifique creation pour votre Salon avec finition en tissu.",
+            img: "assets/img/salon-1.jpg",
+            cat: "Salon",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 1
+        }, title_key: "str_new_16_t", desc_key: "str_new_16_d", price_key: "price_new_16",
+        'p17': {
+            title: "Meridienne Tipaza",
+            price: "62000 DA",
+            desc: "Magnifique creation pour votre Salon avec finition en tissu.",
+            img: "assets/img/salon-2.jpg",
+            cat: "Salon",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 0
+        }, title_key: "str_new_17_t", desc_key: "str_new_17_d", price_key: "price_new_17",
+        'p18': {
+            title: "Fauteuil Club Bejaia",
+            price: "65000 DA",
+            desc: "Magnifique creation pour votre Salon avec finition en tissu.",
+            img: "assets/img/salon-1.jpg",
+            cat: "Salon",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 13
+        }, title_key: "str_new_18_t", desc_key: "str_new_18_d", price_key: "price_new_18",
+        'p19': {
+            title: "Lit Double Cedre",
+            price: "82000 DA",
+            desc: "Magnifique creation pour votre Chambre avec finition en bois.",
+            img: "assets/img/chambre-1.jpg",
+            cat: "Chambre",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 6
+        }, title_key: "str_new_19_t", desc_key: "str_new_19_d", price_key: "price_new_19",
+        'p20': {
+            title: "Armoire Antique",
+            price: "69000 DA",
+            desc: "Magnifique creation pour votre Chambre avec finition en bois.",
+            img: "assets/img/chambre-2.jpg",
+            cat: "Chambre",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 0
+        }, title_key: "str_new_20_t", desc_key: "str_new_20_d", price_key: "price_new_20",
+        'p21': {
+            title: "Table de Chevet Atlas",
+            price: "24000 DA",
+            desc: "Magnifique creation pour votre Chambre avec finition en bois.",
+            img: "assets/img/chambre-1.jpg",
+            cat: "Chambre",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 2
+        }, title_key: "str_new_21_t", desc_key: "str_new_21_d", price_key: "price_new_21",
+        'p22': {
+            title: "Tete de Lit Velours",
+            price: "63000 DA",
+            desc: "Magnifique creation pour votre Chambre avec finition en velours.",
+            img: "assets/img/chambre-1.jpg",
+            cat: "Chambre",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 18
+        }, title_key: "str_new_22_t", desc_key: "str_new_22_d", price_key: "price_new_22",
+        'p23': {
+            title: "Banquette de Lit",
+            price: "70000 DA",
+            desc: "Magnifique creation pour votre Chambre avec finition en velours.",
+            img: "assets/img/chambre-2.jpg",
+            cat: "Chambre",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 0
+        }, title_key: "str_new_23_t", desc_key: "str_new_23_d", price_key: "price_new_23",
+        'p24': {
+            title: "Fauteuil de Chambre",
+            price: "87000 DA",
+            desc: "Magnifique creation pour votre Chambre avec finition en velours.",
+            img: "assets/img/chambre-1.jpg",
+            cat: "Chambre",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 4
+        }, title_key: "str_new_24_t", desc_key: "str_new_24_d", price_key: "price_new_24",
+        'p25': {
+            title: "Lit Forge Tlemcen",
+            price: "81000 DA",
+            desc: "Magnifique creation pour votre Chambre avec finition en metal.",
+            img: "assets/img/chambre-1.jpg",
+            cat: "Chambre",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 19
+        }, title_key: "str_new_25_t", desc_key: "str_new_25_d", price_key: "price_new_25",
+        'p26': {
+            title: "Porte-Vetements Cuivre",
+            price: "93000 DA",
+            desc: "Magnifique creation pour votre Chambre avec finition en metal.",
+            img: "assets/img/chambre-2.jpg",
+            cat: "Chambre",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 0
+        }, title_key: "str_new_26_t", desc_key: "str_new_26_d", price_key: "price_new_26",
+        'p27': {
+            title: "Miroir sur Pied",
+            price: "32000 DA",
+            desc: "Magnifique creation pour votre Chambre avec finition en metal.",
+            img: "assets/img/chambre-1.jpg",
+            cat: "Chambre",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 18
+        }, title_key: "str_new_27_t", desc_key: "str_new_27_d", price_key: "price_new_27",
+        'p28': {
+            title: "Lit Tapissier",
+            price: "23000 DA",
+            desc: "Magnifique creation pour votre Chambre avec finition en tissu.",
+            img: "assets/img/chambre-1.jpg",
+            cat: "Chambre",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 6
+        }, title_key: "str_new_28_t", desc_key: "str_new_28_d", price_key: "price_new_28",
+        'p29': {
+            title: "Bout de Lit Tissu",
+            price: "90000 DA",
+            desc: "Magnifique creation pour votre Chambre avec finition en tissu.",
+            img: "assets/img/chambre-2.jpg",
+            cat: "Chambre",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 0
+        }, title_key: "str_new_29_t", desc_key: "str_new_29_d", price_key: "price_new_29",
+        'p30': {
+            title: "Fauteuil Relax",
+            price: "87000 DA",
+            desc: "Magnifique creation pour votre Chambre avec finition en tissu.",
+            img: "assets/img/chambre-1.jpg",
+            cat: "Chambre",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 7
+        }, title_key: "str_new_30_t", desc_key: "str_new_30_d", price_key: "price_new_30",
+        'p31': {
+            title: "Table Rustique Noyer",
+            price: "78000 DA",
+            desc: "Magnifique creation pour votre Salle A manger avec finition en bois.",
+            img: "assets/img/salle-a-manger-1.jpg",
+            cat: "Salle A manger",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 14
+        }, title_key: "str_new_31_t", desc_key: "str_new_31_d", price_key: "price_new_31",
+        'p32': {
+            title: "Chaise Bistrot",
+            price: "25000 DA",
+            desc: "Magnifique creation pour votre Salle A manger avec finition en bois.",
+            img: "assets/img/salle-a-manger-2.jpg",
+            cat: "Salle A manger",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 0
+        }, title_key: "str_new_32_t", desc_key: "str_new_32_d", price_key: "price_new_32",
+        'p33': {
+            title: "Vaisselier Massif",
+            price: "36000 DA",
+            desc: "Magnifique creation pour votre Salle A manger avec finition en bois.",
+            img: "assets/img/salle-a-manger-1.jpg",
+            cat: "Salle A manger",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 4
+        }, title_key: "str_new_33_t", desc_key: "str_new_33_d", price_key: "price_new_33",
+        'p34': {
+            title: "Chaise Velours Royal",
+            price: "91000 DA",
+            desc: "Magnifique creation pour votre Salle A manger avec finition en velours.",
+            img: "assets/img/salle-a-manger-1.jpg",
+            cat: "Salle A manger",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 5
+        }, title_key: "str_new_34_t", desc_key: "str_new_34_d", price_key: "price_new_34",
+        'p35': {
+            title: "Fauteuil de Table",
+            price: "45000 DA",
+            desc: "Magnifique creation pour votre Salle A manger avec finition en velours.",
+            img: "assets/img/salle-a-manger-2.jpg",
+            cat: "Salle A manger",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 0
+        }, title_key: "str_new_35_t", desc_key: "str_new_35_d", price_key: "price_new_35",
+        'p36': {
+            title: "Banquette Capitonnee",
+            price: "54000 DA",
+            desc: "Magnifique creation pour votre Salle A manger avec finition en velours.",
+            img: "assets/img/salle-a-manger-1.jpg",
+            cat: "Salle A manger",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 3
+        }, title_key: "str_new_36_t", desc_key: "str_new_36_d", price_key: "price_new_36",
+        'p37': {
+            title: "Table Industrielle",
+            price: "28000 DA",
+            desc: "Magnifique creation pour votre Salle A manger avec finition en metal.",
+            img: "assets/img/salle-a-manger-1.jpg",
+            cat: "Salle A manger",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 13
+        }, title_key: "str_new_37_t", desc_key: "str_new_37_d", price_key: "price_new_37",
+        'p38': {
+            title: "Chaise Metal Noir",
+            price: "45000 DA",
+            desc: "Magnifique creation pour votre Salle A manger avec finition en metal.",
+            img: "assets/img/salle-a-manger-2.jpg",
+            cat: "Salle A manger",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 0
+        }, title_key: "str_new_38_t", desc_key: "str_new_38_d", price_key: "price_new_38",
+        'p39': {
+            title: "Desserte Roulante",
+            price: "80000 DA",
+            desc: "Magnifique creation pour votre Salle A manger avec finition en metal.",
+            img: "assets/img/salle-a-manger-1.jpg",
+            cat: "Salle A manger",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 18
+        }, title_key: "str_new_39_t", desc_key: "str_new_39_d", price_key: "price_new_39",
+        'p40': {
+            title: "Chaise Tissu Lin",
+            price: "82000 DA",
+            desc: "Magnifique creation pour votre Salle A manger avec finition en tissu.",
+            img: "assets/img/salle-a-manger-1.jpg",
+            cat: "Salle A manger",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 1
+        }, title_key: "str_new_40_t", desc_key: "str_new_40_d", price_key: "price_new_40",
+        'p41': {
+            title: "Fauteuil Repas",
+            price: "97000 DA",
+            desc: "Magnifique creation pour votre Salle A manger avec finition en tissu.",
+            img: "assets/img/salle-a-manger-2.jpg",
+            cat: "Salle A manger",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 0
+        }, title_key: "str_new_41_t", desc_key: "str_new_41_d", price_key: "price_new_41",
+        'p42': {
+            title: "Housse de Chaise",
+            price: "45000 DA",
+            desc: "Magnifique creation pour votre Salle A manger avec finition en tissu.",
+            img: "assets/img/salle-a-manger-1.jpg",
+            cat: "Salle A manger",
+            dims: { w: 100, h: 100, d: 100 },
+            stock: 4
+        }, title_key: "str_new_42_t", desc_key: "str_new_42_d", price_key: "price_new_42"};
 
     const urlParams = new URLSearchParams(window.location.search);
     const pid = urlParams.get('id');
@@ -355,7 +679,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (waBtn) {
             const updateWaLink = () => {
                 const lang = localStorage.getItem('site_lang') || 'fr';
-                const msgTemplate = (typeof dictionary !== 'undefined' && dictionary['wa_prefill_msg']) ? dictionary['wa_prefill_msg'][lang] : "Bonjour, je suis int�ress�(e) par le produit {name} ({price}).";
+                const msgTemplate = (typeof dictionary !== 'undefined' && dictionary['wa_prefill_msg']) ? dictionary['wa_prefill_msg'][lang] : "Bonjour, je suis intéressé(e) par le produit {name} ({price}).";
                 const pName = (typeof dictionary !== 'undefined' && dictionary[p.title_key]) ? dictionary[p.title_key][lang] : p.title;
                 const pPrice = (typeof dictionary !== 'undefined' && dictionary[p.price_key]) ? dictionary[p.price_key][lang] : p.price;
                 const msg = msgTemplate.replace('{name}', pName).replace('{price}', pPrice);
