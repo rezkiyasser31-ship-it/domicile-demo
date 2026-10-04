@@ -1,13 +1,13 @@
 /* Domicile - Custom Properties */
 :root {
-  --color-ivory: #FAF7F2;
-  --color-charcoal: #1F1F1F;
+  --color-ivory: #FFFFFF;
+  --color-charcoal: #111827;
   --color-brand-red: #ED1C24;
-  --color-sand: #E8DFD3;
-  --color-walnut: #6B4F3A;
+  --color-sand: #F3F4F6;
+  --color-walnut: #4B5563;
   
-  --font-heading: 'Fraunces', serif;
-  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Geist', sans-serif;
   --font-arabic: 'Cairo', sans-serif;
 
   --spacing-1: 0.25rem;
