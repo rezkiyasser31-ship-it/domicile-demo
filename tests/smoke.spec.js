@@ -122,4 +122,21 @@ test.describe('Baseline Smoke Tests', () => {
     expect(decoded).toContain('120');
   });
 
+
+  test('SEO metadata is correctly populated', async ({ page }) => {
+    // Check public page
+    await page.goto('/index.html');
+    const title = await page.title();
+    expect(title.length).toBeGreaterThan(0);
+    const desc = await page.locator('meta[name="description"]').getAttribute('content');
+    expect(desc.length).toBeGreaterThan(0);
+    const ogTitle = await page.locator('meta[property="og:title"]').getAttribute('content');
+    expect(ogTitle.length).toBeGreaterThan(0);
+
+    // Check admin page
+    await page.goto('/admin.html');
+    const robots = await page.locator('meta[name="robots"]').getAttribute('content');
+    expect(robots).toContain('noindex');
+  });
+
 });
