@@ -3,3 +3,6 @@ package.json
 package-lock.json
 *.py
 test.js
+
+test-results/
+playwright-report/
