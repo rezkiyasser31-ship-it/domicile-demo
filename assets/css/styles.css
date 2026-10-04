@@ -477,3 +477,70 @@ button {
 .category-link.active h3 {
   color: var(--color-red);
 }
+
+/* =========================================
+   Mobile & Accessibility Fixes
+   ========================================= */
+
+/* Cramped Tap Targets (<44px) Fixes */
+button, 
+.btn, 
+.nav-link,
+.lang-switcher button, 
+.mobile-action, 
+.date-range-btn,
+.nav-tab {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure focus states are visible for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-brand-red, #ED1C24);
+  outline-offset: 2px;
+}
+
+/* Inventory Table - Horizontal Overflow Fix */
+.table-responsive-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-sand, #E6E2DD);
+  border-radius: 8px;
+  position: relative;
+}
+
+.scroll-hint {
+  display: none;
+  font-size: 0.75rem;
+  color: #666;
+  text-align: right;
+  margin-bottom: 0.25rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  /* Show scroll hint on mobile */
+  .scroll-hint {
+    display: block;
+  }
+  
+  /* Prevent charts from overflowing */
+  canvas, .chart-card {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Header adjustments for mobile */
+  .site-header {
+    padding-inline: var(--spacing-2);
+  }
+  
+  .nav-menu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

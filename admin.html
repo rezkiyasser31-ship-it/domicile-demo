@@ -146,13 +146,13 @@
     <div class="chart-card">
         <h3 data-i18n="admin_chart_visits">Visites & Clics WhatsApp</h3>
         <div style="position: relative; height: 300px; width: 100%;">
-            <canvas id="visitsChart"></canvas>
+            <canvas id="visitsChart" role="img" data-i18n-aria="chart_aria_visits"></canvas>
         </div>
     </div>
     <div class="chart-card">
         <h3 data-i18n="admin_chart_traffic">Sources de Trafic</h3>
         <div style="position: relative; height: 300px; width: 100%;">
-            <canvas id="trafficChart"></canvas>
+            <canvas id="trafficChart" role="img" data-i18n-aria="chart_aria_traffic"></canvas>
         </div>
     </div>
 </div>
@@ -160,7 +160,7 @@
     <div class="chart-card">
         <h3 data-i18n="admin_chart_category">Vues par Catégorie</h3>
         <div style="position: relative; height: 300px; width: 100%;">
-            <canvas id="categoryChart"></canvas>
+            <canvas id="categoryChart" role="img" data-i18n-aria="chart_aria_category"></canvas>
         </div>
     </div>
     <div class="chart-card">
@@ -191,7 +191,8 @@
     <button class="btn btn-secondary" id="export-csv-btn" data-i18n="admin_export_csv" style="padding: 0.5rem 1rem;">Exporter en CSV</button>
 </div>
 </div>
-<div style="overflow-x: auto;">
+<div class="scroll-hint" data-i18n="admin_scroll_hint">Faites défiler horizontalement pour voir plus</div>
+<div class="table-responsive-wrapper" style="overflow-x: auto;">
 <table class="inventory-table">
 <thead>
 <tr>

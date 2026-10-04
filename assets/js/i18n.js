@@ -891,8 +891,13 @@ const dictionary = {
   "chart_label_chambre": {"fr":"Chambre","en":"Bedroom"},
   "chart_label_sam": {"fr":"Salle à manger","en":"Dining Room"},
   "demo_alert_export": {"fr":"Ceci est une démo. L'export CSV a généré un fichier avec les données locales actuelles.","en":"This is a demo. CSV export generated a file with current local data."},
-  "admin_export_name": {"fr":"inventaire_domicile.csv","en":"domicile_inventory.csv"}
+  "admin_export_name": {"fr":"inventaire_domicile.csv","en":"domicile_inventory.csv"},
+  "admin_scroll_hint": {"fr":"Faites défiler horizontalement pour voir plus","en":"Scroll horizontally to see more"},
+  "chart_aria_visits": {"fr":"Graphique des visites et clics WhatsApp", "en":"Visits and WhatsApp Clicks Chart"},
+  "chart_aria_traffic": {"fr":"Graphique des sources de trafic", "en":"Traffic Sources Chart"},
+  "chart_aria_category": {"fr":"Graphique des ventes par catégorie", "en":"Sales by Category Chart"}
 };
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('site_lang') || 'fr';
@@ -993,6 +998,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const key = el.getAttribute('data-i18n-placeholder');
             if (dictionary[key] && dictionary[key][lang]) {
                 el.placeholder = dictionary[key][lang];
+            }
+        });
+        
+        document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+            const key = el.getAttribute('data-i18n-aria');
+            if (dictionary[key] && dictionary[key][lang]) {
+                el.setAttribute('aria-label', dictionary[key][lang]);
             }
         });
     }
