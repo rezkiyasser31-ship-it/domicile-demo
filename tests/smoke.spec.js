@@ -52,11 +52,10 @@ test.describe('Baseline Smoke Tests', () => {
     // Switch to Inventory tab
     await page.click('button[data-target="inventory-tab"]');
     await expect(page.locator('#export-csv-btn')).toBeVisible();
-
-    const dialogPromise = page.waitForEvent('dialog');
+    page.once('dialog', async dialog => {
+      expect(dialog.message()).toContain('export');
+      await dialog.accept();
+    });
     await page.click('#export-csv-btn');
-    const dialog = await dialogPromise;
-    expect(dialog.message()).toContain('export');
-    await dialog.accept();
   });
 });
