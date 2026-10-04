@@ -178,8 +178,14 @@ test.describe('SEO Metadata', () => {
     expect(title.length).toBeGreaterThan(0);
     const desc = await page.locator('meta[name="description"]').getAttribute('content');
     expect(desc.length).toBeGreaterThan(0);
+    
     const ogTitle = await page.locator('meta[property="og:title"]').getAttribute('content');
     expect(ogTitle.length).toBeGreaterThan(0);
+    expect(ogTitle).not.toMatch(/^(meta_title_|str_\d)/);
+    
+    const ogDesc = await page.locator('meta[property="og:description"]').getAttribute('content');
+    expect(ogDesc.length).toBeGreaterThan(20);
+    expect(ogDesc).not.toMatch(/^(meta_desc_|str_\d)/);
 
     await page.goto('/admin.html');
     const robots = await page.locator('meta[name="robots"]').getAttribute('content');
