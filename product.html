@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Domicile | Meubles Oran</title>
+  <title>Domicile | Produit</title>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,97 +50,25 @@
   </header>
 
   <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <h1 class="hero-title">L'élégance à portée de main</h1>
-      <p class="hero-subtitle">Découvrez notre collection de meubles chics et contemporains pour sublimer votre intérieur à Oran.</p>
-      <a href="collections.html" class="btn">Voir la collection</a>
-    </div>
-  </section>
+  
 
   <!-- Featured Products -->
-  <section class="container" style="padding-block: var(--spacing-16);">
-    <h2 class="text-center" style="margin-bottom: var(--spacing-8);">Nos Nouveautés</h2>
-    
-    <div class="filter-bar">
-      <button class="filter-btn active" data-filter="all">Tout</button>
-      <button class="filter-btn" data-filter="salon">Salon</button>
-      <button class="filter-btn" data-filter="chambre">Chambre</button>
-      <button class="filter-btn" data-filter="salle-a-manger">Salle à manger</button>
-    </div>
-
-    <div class="product-grid">
-      <!-- Product 1 -->
-      <a href="product.html" class="product-card" data-category="salon">
-        <div class="product-image">[Image Salon 1]</div>
-        <div class="product-info">
-          <div class="product-category">Salon</div>
-          <h3 class="product-title">Canapé Modulable 'Sahara'</h3>
-          <p class="product-desc">Un canapé spacieux et confortable avec revêtement anti-tâches.</p>
-          <div class="product-price">Sur devis</div>
-        </div>
-      </a>
-      
-      <!-- Product 2 -->
-      <a href="product.html" class="product-card" data-category="chambre">
-        <div class="product-image">[Image Chambre 1]</div>
-        <div class="product-info">
-          <div class="product-category">Chambre</div>
-          <h3 class="product-title">Lit King Size 'Atlas'</h3>
-          <p class="product-desc">Tête de lit en velours et sommier robuste avec rangement intégré.</p>
-          <div class="product-price">Sur devis</div>
-        </div>
-      </a>
-
-      <!-- Product 3 -->
-      <a href="product.html" class="product-card" data-category="salle-a-manger">
-        <div class="product-image">[Image Salle à Manger 1]</div>
-        <div class="product-info">
-          <div class="product-category">Salle à manger</div>
-          <h3 class="product-title">Table à Manger 'Oran'</h3>
-          <p class="product-desc">Table en noyer massif pour 8 personnes avec chaises assorties.</p>
-          <div class="product-price">Sur devis</div>
-        </div>
-      </a>
-
-      <!-- Product 4 -->
-      <a href="product.html" class="product-card" data-category="salon">
-        <div class="product-image">[Image Salon 2]</div>
-        <div class="product-info">
-          <div class="product-category">Salon</div>
-          <h3 class="product-title">Fauteuil d'Accent 'Zian'</h3>
-          <p class="product-desc">Fauteuil contemporain avec pieds en métal noir.</p>
-          <div class="product-price">Sur devis</div>
-        </div>
-      </a>
-
-      <!-- Product 5 -->
-      <a href="product.html" class="product-card" data-category="chambre">
-        <div class="product-image">[Image Chambre 2]</div>
-        <div class="product-info">
-          <div class="product-category">Chambre</div>
-          <h3 class="product-title">Commode 'Nocturne'</h3>
-          <p class="product-desc">Commode à 6 tiroirs avec finition mate élégante.</p>
-          <div class="product-price">Sur devis</div>
-        </div>
-      </a>
-
-      <!-- Product 6 -->
-      <a href="product.html" class="product-card" data-category="salle-a-manger">
-        <div class="product-image">[Image Salle à Manger 2]</div>
-        <div class="product-info">
-          <div class="product-category">Salle à manger</div>
-          <h3 class="product-title">Buffet 'Méditerranée'</h3>
-          <p class="product-desc">Buffet de rangement spacieux avec portes coulissantes.</p>
-          <div class="product-price">Sur devis</div>
-        </div>
-      </a>
-    </div>
-    
-    <div class="text-center">
-      <a href="collections.html" class="btn btn-secondary">Voir toutes les collections</a>
+  
+  <section class="container" style="padding-block: var(--spacing-16); min-height: 50vh;">
+    <h1 style="margin-bottom: var(--spacing-8);">Détails du Produit</h1>
+    <div style="display: flex; gap: var(--spacing-8); flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 300px;">
+        <img src="assets/img/salon-1.jpg" alt="Détail du produit" style="width: 100%; border-radius: 8px;">
+      </div>
+      <div style="flex: 1; min-width: 300px;">
+        <h2 class="product-title" style="font-size: 2rem;">Canapé Modulable 'Sahara'</h2>
+        <p class="product-price" style="font-size: 1.5rem; margin-bottom: var(--spacing-4);">Sur devis</p>
+        <p>Un canapé spacieux et confortable avec revêtement anti-tâches, parfait pour votre salon. Structure en bois massif, assises en mousse haute résilience.</p>
+        <button class="btn" style="margin-top: var(--spacing-4);">Demander un devis</button>
+      </div>
     </div>
   </section>
+
 
   <!-- Footer -->
   <footer class="site-footer">
