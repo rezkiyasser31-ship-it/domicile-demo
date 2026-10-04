@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domicile | Admin (Demo)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    #admin-dashboard { display: none; }
+    .admin-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .stat-card { background: var(--color-ivory, #FAF9F6); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--color-sand, #E6E2DD); text-align: center; }
+    .stat-card h3 { font-size: 2rem; color: var(--color-red, #8B2635); margin-bottom: 0.5rem; }
+    .stat-card p { font-size: 0.875rem; color: var(--color-charcoal, #333); }
+    .inventory-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .inventory-table th, .inventory-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--color-sand, #E6E2DD); }
+    .inventory-table th { font-family: 'Fraunces', serif; background: var(--color-ivory, #FAF9F6); }
+    .stock-input { width: 60px; padding: 0.25rem; border: 1px solid #ccc; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-wordmark">Domicile Admin</div>
+      </a>
+    </div>
+  </header>
+
+  <main class="container" style="padding-block: 4rem; min-height: 70vh;">
+    <!-- NOTE: This is a DEMO/MOCK admin page. There is no real security or backend! -->
+    
+    <div id="login-section" style="max-width: 400px; margin: 0 auto; text-align: center; background: var(--color-ivory); padding: 2rem; border-radius: 8px; border: 1px solid var(--color-sand);">
+      <h2 style="margin-bottom: 1rem;">Connexion Admin</h2>
+      <p style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #666;">Ceci est une démo. Mot de passe : domicile2026</p>
+      <input type="password" id="admin-pwd" placeholder="Mot de passe" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px;">
+      <button id="login-btn" class="btn" style="width: 100%;">Se connecter</button>
+      <p id="login-err" style="color: red; display: none; margin-top: 1rem; font-size: 0.875rem;">Mot de passe incorrect</p>
+    </div>
+
+    <div id="admin-dashboard">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h2>Tableau de bord</h2>
+        <button id="logout-btn" class="btn btn-secondary">Déconnexion</button>
+      </div>
+
+      <div class="admin-stats">
+        <div class="stat-card">
+          <h3>1,245</h3>
+          <p>Visites ce mois</p>
+        </div>
+        <div class="stat-card">
+          <h3>84</h3>
+          <p>Clics WhatsApp</p>
+        </div>
+        <div class="stat-card">
+          <h3 style="font-size: 1.25rem; line-height: 1.2; margin-top: 0.5rem;">Canapé 'Sahara'<br>Lit 'Atlas'</h3>
+          <p style="margin-top: 0.5rem;">Top Produits Vus</p>
+        </div>
+      </div>
+
+      <h3>Inventaire des Produits</h3>
+      <div style="overflow-x: auto;">
+        <table class="inventory-table">
+          <thead>
+            <tr>
+              <th>Produit</th>
+              <th>Catégorie</th>
+              <th>Prix</th>
+              <th>Stock</th>
+            </tr>
+          </thead>
+          <tbody id="inventory-body">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginSection = document.getElementById('login-section');
+      const adminDashboard = document.getElementById('admin-dashboard');
+      const loginBtn = document.getElementById('login-btn');
+      const pwdInput = document.getElementById('admin-pwd');
+      const loginErr = document.getElementById('login-err');
+      const logoutBtn = document.getElementById('logout-btn');
+
+      loginBtn.addEventListener('click', () => {
+        if (pwdInput.value === 'domicile2026') {
+          loginSection.style.display = 'none';
+          adminDashboard.style.display = 'block';
+        } else {
+          loginErr.style.display = 'block';
+        }
+      });
+
+      logoutBtn.addEventListener('click', () => {
+        pwdInput.value = '';
+        loginErr.style.display = 'none';
+        adminDashboard.style.display = 'none';
+        loginSection.style.display = 'block';
+      });
+
+      // Mock Inventory Data
+      const products = [
+        { name: "Canapé Modulable 'Sahara'", category: "Salon", price: "120 000 DA", stock: 3 },
+        { name: "Lit King Size 'Atlas'", category: "Chambre", price: "220 000 DA", stock: 2 },
+        { name: "Table à Manger 'Oran'", category: "Salle à manger", price: "150 000 DA", stock: 5 },
+        { name: "Fauteuil d'Accent 'Zian'", category: "Salon", price: "35 000 DA", stock: 12 },
+        { name: "Commode 'Nocturne'", category: "Chambre", price: "85 000 DA", stock: 4 },
+        { name: "Buffet 'Méditerranée'", category: "Salle à manger", price: "95 000 DA", stock: 7 }
+      ];
+
+      const tbody = document.getElementById('inventory-body');
+      products.forEach((p, idx) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${p.name}</td>
+          <td>${p.category}</td>
+          <td>${p.price}</td>
+          <td><input type="number" class="stock-input" value="${p.stock}" min="0"></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -396,7 +396,7 @@ button {
 /* Media Queries */
 @media (max-width: 768px) {
   .nav-menu {
-    display: none; /* Hide for demo, typically handled by JS */
+    
     position: absolute;
     top: 100%;
     inset-inline-start: 0;
@@ -407,9 +407,7 @@ button {
     border-bottom: 1px solid var(--color-sand);
   }
   
-  .nav-menu.is-open {
-    display: flex;
-  }
+  
 
   .mobile-menu-toggle {
     display: block;
@@ -422,4 +420,60 @@ button {
   .fab-whatsapp {
     bottom: calc(70px + env(safe-area-inset-bottom));
   }
+}
+
+/* Animations & Polish */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.btn, .filter-btn, .nav-link, .category-link {
+  transition: all 0.3s ease;
+}
+.btn:hover, .filter-btn:hover {
+  opacity: 0.8;
+}
+
+/* Smooth mobile menu */
+.nav-menu {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+@media (max-width: 768px) {
+  .nav-menu {
+    display: flex;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+  }
+  .nav-menu.is-open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+/* Category cards hover */
+.category-link:hover img {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+.category-link img {
+  transition: transform 0.3s ease;
+}
+.category-link.active h3 {
+  color: var(--color-red);
 }
